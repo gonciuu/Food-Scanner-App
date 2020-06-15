@@ -18,7 +18,7 @@ class WelcomePagerAdapter(var context: Context?) : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return 5
+        return 3
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
