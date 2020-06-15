@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.example.foodpoint.R
@@ -13,7 +14,7 @@ import com.example.foodpoint.R
 class WelcomePagerAdapter(var context: Context?) : PagerAdapter() {
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view === `object` as FrameLayout
+        return view === `object` as LinearLayout
     }
 
     override fun getCount(): Int {
@@ -28,7 +29,7 @@ class WelcomePagerAdapter(var context: Context?) : PagerAdapter() {
 
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        container.removeView(`object` as FrameLayout)
+        container.removeView(`object` as LinearLayout)
     }
 
 

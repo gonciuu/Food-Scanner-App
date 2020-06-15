@@ -5,15 +5,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="100dp">
+    android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_gravity="center"
-        android:textColor="#fff"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Welcome to Food Point"
+        android:textSize="26sp"
+        android:fontFamily="@font/segoeuib"
+        android:textColor="@color/darkGray" />
+    <TextView
+        android:id="@+id/DescriptionTextView"
+        android:layout_width="match_parent"
+        android:paddingTop="15dp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:text="Please give access your camera so that we can scan and provide you that what\n is inside the food"
+        android:textSize="15sp"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
+        android:paddingBottom="15dp"
+        android:fontFamily="@font/segoeui"
+        android:textColor="@color/lightGray" />
 </LinearLayout>
