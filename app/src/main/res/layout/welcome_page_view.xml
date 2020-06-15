@@ -17,7 +17,7 @@
         android:fontFamily="@font/segoeuib"
         android:textColor="@color/darkGray" />
     <TextView
-        android:id="@+id/DescriptionTextView"
+        android:id="@+id/descriptionTextView"
         android:layout_width="match_parent"
         android:paddingTop="15dp"
         android:textAlignment="center"
