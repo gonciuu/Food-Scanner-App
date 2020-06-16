@@ -1,4 +1,4 @@
-package com.example.foodpoint.screens.adapters
+package com.example.foodpoint.screens.adapters.pagers
 
 import android.content.Context
 import android.view.LayoutInflater

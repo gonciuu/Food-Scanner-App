@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.foodpoint.R
 import com.example.foodpoint.classes.ViewPagerCard
-import com.example.foodpoint.screens.adapters.WelcomePagerAdapter
+import com.example.foodpoint.screens.adapters.pagers.WelcomePagerAdapter
 import kotlinx.android.synthetic.main.fragment_welcome.*
 
 class WelcomeFragment : Fragment() {
@@ -26,7 +26,11 @@ class WelcomeFragment : Fragment() {
             ViewPagerCard("Get health's nutrition","In that app you can get information about if scaned food is t\n healthy or not")
         )
 
-        welcomeViewPager.adapter = WelcomePagerAdapter(context,listOfPagerCard)
+        welcomeViewPager.adapter =
+            WelcomePagerAdapter(
+                context,
+                listOfPagerCard
+            )
         welcomePagerDots.setupWithViewPager(welcomeViewPager)
         welcomeViewPager.invalidate()
 
