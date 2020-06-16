@@ -29,7 +29,7 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/segoeuib"
             android:paddingStart="40dp"
             android:paddingEnd="40dp"
@@ -89,12 +89,9 @@
 
         <EditText
             android:id="@+id/editTextNumber"
-            android:layout_width="0dp"
+            android:layout_width="351dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/little_rounded_bg"
             android:backgroundTint="@color/lightOrange"
             android:ems="10"
@@ -104,7 +101,6 @@
             android:padding="22dp"
             android:textColorHint="#FF5722"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -123,12 +119,15 @@
             android:paddingBottom="17dp"
             android:text="Show food details"
             android:textAllCaps="false"
+            android:layout_marginTop="70dp"
             android:textColor="#ffffff"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
