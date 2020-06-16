@@ -6,5 +6,13 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.foodpoint.screens.WelcomeFragment"
-        android:label="WelcomeFragment" />
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_scanFragment"
+            app:destination="@id/scanFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="com.example.foodpoint.screens.adapters.ScanFragment"
+        android:label="ScanFragment" />
 </navigation>
