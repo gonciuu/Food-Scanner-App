@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@drawable/little_rounded_bg"
+    android:backgroundTint="#E4E4E4"
+    android:padding="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="11dp"
+    android:layout_marginBottom="11dp"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:elevation="0dp"
+        app:cardCornerRadius="8dp">
+
+        <ImageView
+            android:id="@+id/roundedImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background" />
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:fontFamily="@font/segoeuib"
+            android:textColor="@color/darkGray"
+            android:textSize="15sp"
+            android:text="Rice noodles" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="15sp"
+            android:fontFamily="@font/segoeui"
+            android:text="634824724642" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_delete"
+        android:layout_marginRight="15dp"
+        android:tint="@color/darkGray" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_get_link"
+        android:tint="@color/darkGray" />
+</LinearLayout>

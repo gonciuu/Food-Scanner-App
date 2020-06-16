@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodpoint.R
+import com.example.foodpoint.screens.adapters.recycler_views.HistoryRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_scan_history.*
 
 class ScanHistoryFragment : Fragment() {
@@ -18,7 +19,7 @@ class ScanHistoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         historyRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-
+            adapter = HistoryRecyclerViewAdapter()
         }
     }
 
