@@ -67,6 +67,7 @@
                 android:src="@drawable/ic_night_mode" />
 
             <TextView
+                android:id="@+id/nightMode"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.2"

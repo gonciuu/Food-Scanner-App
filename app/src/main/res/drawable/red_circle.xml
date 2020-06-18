@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Larger blue green_circle in back -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#7E0000"/>
+            <size
+                android:width="15dp"
+                android:height="15dp"/>
+        </shape>
+    </item>
+    <!-- Smaller red green_circle in front -->
+    <item>
+        <shape android:shape="oval">
+            <stroke android:color="@android:color/transparent"
+                android:width="5dp"/>
+            <solid android:color="#E10000"/>
+            <size
+                android:width="12dp"
+                android:height="12dp"/>
+        </shape>
+    </item>
+</layer-list>

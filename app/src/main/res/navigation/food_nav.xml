@@ -25,5 +25,21 @@
         android:id="@+id/scanHistoryFragment"
         android:name="com.example.foodpoint.screens.ScanHistoryFragment"
         android:label="fragment_scan_history"
-        tools:layout="@layout/fragment_scan_history" />
+        tools:layout="@layout/fragment_scan_history" >
+        <action
+            android:id="@+id/action_scanHistoryFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.foodpoint.screens.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_foodDetailsFragment"
+            app:destination="@id/foodDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodDetailsFragment"
+        android:name="com.example.foodpoint.screens.FoodDetailsFragment"
+        android:label="FoodDetailsFragment" />
 </navigation>
