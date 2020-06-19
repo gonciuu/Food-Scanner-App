@@ -9,10 +9,10 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:background="#E3E3E3"
+        android:background="#E4E4E4"
         android:layout_height="match_parent">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -75,6 +75,7 @@
 
                     <ImageView
                         android:layout_width="100dp"
+                        android:layout_gravity="center"
                         android:layout_height="190dp"
                         android:contentDescription="TODO"
                         android:src="@drawable/zdj" />
@@ -82,7 +83,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -92,8 +93,8 @@
                             android:ellipsize="end"
                             android:fontFamily="@font/segoeuib"
                             android:maxLines="1"
+                            android:paddingLeft="20dp"
                             android:text="Chinnese salad"
-                            android:textAlignment="center"
                             android:textColor="@color/darkGray"
                             android:textSize="20sp" />
 
@@ -101,11 +102,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
-                            android:fontFamily="@font/segoeui"
+                            android:fontFamily="@font/segoeuib"
                             android:maxLines="1"
-                            android:paddingLeft="15dp"
+                            android:paddingLeft="20dp"
                             android:paddingRight="15dp"
-                            android:text="pomidory, oregano, sezam, musztarda"
+                            android:text="Calories : 254"
+                            android:drawableLeft="@drawable/green_circle"
+                            android:drawablePadding="10dp"
+                            android:layout_marginTop="5dp"
                             android:textColor="@color/darkGray"
                             android:textSize="14sp" />
 
@@ -113,27 +117,31 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="7dp"
                             android:ellipsize="end"
-                            android:fontFamily="@font/segoeuib"
-                            android:maxLines="1"
-                            android:text="Vegan Free"
-                            android:textAlignment="center"
-                            android:textColor="#0AA110"
-                            android:textSize="16sp" />
+                            android:fontFamily="@font/segoeuisb"
+                            android:maxLines="2"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="25dp"
+                            android:text="tomatoes, oregano, sausage, movies, money, iron, nutrinions, onion"
+                            android:textColor="@color/darkGray"
+                            android:textSize="15sp" />
 
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="20dp"
-                            android:elevation="0dp"
-                            android:src="@drawable/ic_send"
-                            app:backgroundTint="#FFA200"
-                            app:fabSize="mini"
-                            app:maxImageSize="20dp"
-                            app:tint="#ffffff" />
+                            android:text="Check"
+                            android:background="@drawable/rounded_bg"
+                            android:backgroundTint="@color/orange"
+                            android:layout_marginTop="15dp"
+                            android:textAlignment="center"
+                            android:padding="9dp"
+                            android:layout_marginRight="77dp"
+                            android:layout_marginLeft="77dp"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/segoeuib"/>
 
                     </LinearLayout>
 
@@ -145,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/segoeuib"
                 android:letterSpacing="0.1"
                 android:text="Popular Today"
