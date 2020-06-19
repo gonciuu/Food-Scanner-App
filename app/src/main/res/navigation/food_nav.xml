@@ -41,5 +41,13 @@
     <fragment
         android:id="@+id/foodDetailsFragment"
         android:name="com.example.foodpoint.screens.FoodDetailsFragment"
-        android:label="FoodDetailsFragment" />
+        android:label="FoodDetailsFragment" >
+        <action
+            android:id="@+id/action_foodDetailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.foodpoint.screens.HomeFragment"
+        android:label="HomeFragment" />
 </navigation>
