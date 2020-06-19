@@ -41,7 +41,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-        <Button
+        <TextView
             android:id="@+id/button2"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
@@ -52,6 +52,9 @@
             android:fontFamily="@font/segoeuisb"
             android:paddingStart="35dp"
             android:paddingEnd="35dp"
+            android:textAlignment="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="Today"
             android:textAllCaps="false"
             android:textColor="#fff"
@@ -61,7 +64,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-        <Button
+        <TextView
             android:id="@+id/getAllHistoryButton"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
@@ -72,6 +75,9 @@
             android:fontFamily="@font/segoeuisb"
             android:paddingStart="35dp"
             android:paddingEnd="35dp"
+            android:textAlignment="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:text="All"
             android:textAllCaps="false"
             android:textColor="#313131"
