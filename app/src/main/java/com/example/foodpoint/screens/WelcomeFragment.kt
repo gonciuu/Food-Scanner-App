@@ -56,9 +56,8 @@ class WelcomeFragment : Fragment() {
         getApi()
     }
         var food : Food? = null
-
         private fun getApi(){
-        val job = CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             try {
                 food = RetrofitClient.instance.getFoodAsync().await().body()
                 Log.d("TAG",food!!.product.productName)
