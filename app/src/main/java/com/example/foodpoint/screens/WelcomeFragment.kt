@@ -1,15 +1,21 @@
 package com.example.foodpoint.screens
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.foodpoint.R
+import com.example.foodpoint.api.food_class.Food
+import com.example.foodpoint.api.service.RetrofitClient
 import com.example.foodpoint.classes.ViewPagerCard
 import com.example.foodpoint.screens.adapters.pagers.WelcomePagerAdapter
 import kotlinx.android.synthetic.main.fragment_welcome.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class WelcomeFragment : Fragment() {
 
@@ -46,6 +52,22 @@ class WelcomeFragment : Fragment() {
         startButton.setOnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_scanFragment)
         }
+
+        getApi()
+    }
+        var food : Food? = null
+
+        private fun getApi(){
+        val job = CoroutineScope(Dispatchers.IO).launch {
+            try {
+                food = RetrofitClient.instance.getFoodAsync().await().body()
+                Log.d("TAG",food!!.product.productName)
+            }catch (ex:Exception){
+                Log.d("TAG",ex.message!!)
+            }
+
+        }
+
     }
 
 }

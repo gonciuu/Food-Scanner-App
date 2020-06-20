@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 data class SelectedImages(
     @SerializedName("front")
-    val front: Front,
+    val front: FrontX,
     @SerializedName("ingredients")
-    val ingredients: Ingredients,
+    val ingredients: IngredientsX,
     @SerializedName("nutrition")
-    val nutrition: Nutrition
+    val nutrition: NutritionX
 )

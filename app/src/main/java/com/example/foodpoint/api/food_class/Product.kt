@@ -11,13 +11,15 @@ data class Product(
     @SerializedName("additives_old_n")
     val additivesOldN: Int,
     @SerializedName("additives_old_tags")
-    val additivesOldTags: List<Any>,
+    val additivesOldTags: List<String>,
     @SerializedName("additives_original_tags")
-    val additivesOriginalTags: List<Any>,
+    val additivesOriginalTags: List<String>,
     @SerializedName("additives_prev_original_tags")
-    val additivesPrevOriginalTags: List<Any>,
+    val additivesPrevOriginalTags: List<String>,
     @SerializedName("additives_tags")
-    val additivesTags: List<Any>,
+    val additivesTags: List<String>,
+    @SerializedName("additives_tags_n")
+    val additivesTagsN: Any,
     @SerializedName("allergens")
     val allergens: String,
     @SerializedName("allergens_from_ingredients")
@@ -26,32 +28,36 @@ data class Product(
     val allergensFromUser: String,
     @SerializedName("allergens_hierarchy")
     val allergensHierarchy: List<Any>,
-    @SerializedName("allergens_lc")
-    val allergensLc: String,
     @SerializedName("allergens_tags")
     val allergensTags: List<Any>,
     @SerializedName("amino_acids_prev_tags")
     val aminoAcidsPrevTags: List<Any>,
     @SerializedName("amino_acids_tags")
     val aminoAcidsTags: List<Any>,
+    @SerializedName("brand_owner")
+    val brandOwner: String,
+    @SerializedName("brand_owner_imported")
+    val brandOwnerImported: String,
     @SerializedName("brands")
     val brands: String,
+    @SerializedName("brands_debug_tags")
+    val brandsDebugTags: List<Any>,
     @SerializedName("brands_tags")
     val brandsTags: List<String>,
-    @SerializedName("carbon_footprint_from_known_ingredients_debug")
-    val carbonFootprintFromKnownIngredientsDebug: String,
-    @SerializedName("carbon_footprint_percent_of_known_ingredients")
-    val carbonFootprintPercentOfKnownIngredients: Int,
     @SerializedName("categories")
     val categories: String,
     @SerializedName("categories_hierarchy")
     val categoriesHierarchy: List<String>,
+    @SerializedName("categories_imported")
+    val categoriesImported: String,
     @SerializedName("categories_lc")
     val categoriesLc: String,
     @SerializedName("categories_tags")
     val categoriesTags: List<String>,
     @SerializedName("category_properties")
     val categoryProperties: CategoryProperties,
+    @SerializedName("checkers")
+    val checkers: List<Any>,
     @SerializedName("checkers_tags")
     val checkersTags: List<Any>,
     @SerializedName("ciqual_food_name_tags")
@@ -70,12 +76,18 @@ data class Product(
     val completedT: Int,
     @SerializedName("completeness")
     val completeness: Double,
+    @SerializedName("correctors")
+    val correctors: List<String>,
     @SerializedName("correctors_tags")
     val correctorsTags: List<String>,
     @SerializedName("countries")
     val countries: String,
+    @SerializedName("countries_debug_tags")
+    val countriesDebugTags: List<Any>,
     @SerializedName("countries_hierarchy")
     val countriesHierarchy: List<String>,
+    @SerializedName("countries_imported")
+    val countriesImported: String,
     @SerializedName("countries_lc")
     val countriesLc: String,
     @SerializedName("countries_tags")
@@ -96,30 +108,40 @@ data class Product(
     val dataQualityWarningsTags: List<String>,
     @SerializedName("data_sources")
     val dataSources: String,
+    @SerializedName("data_sources_imported")
+    val dataSourcesImported: String,
     @SerializedName("data_sources_tags")
     val dataSourcesTags: List<String>,
     @SerializedName("debug_param_sorted_langs")
     val debugParamSortedLangs: List<String>,
+    @SerializedName("editors")
+    val editors: List<String>,
     @SerializedName("editors_tags")
     val editorsTags: List<String>,
     @SerializedName("emb_codes")
     val embCodes: String,
+    @SerializedName("emb_codes_20141016")
+    val embCodes20141016: String,
+    @SerializedName("emb_codes_debug_tags")
+    val embCodesDebugTags: List<Any>,
+    @SerializedName("emb_codes_orig")
+    val embCodesOrig: String,
     @SerializedName("emb_codes_tags")
     val embCodesTags: List<Any>,
     @SerializedName("entry_dates_tags")
     val entryDatesTags: List<String>,
     @SerializedName("expiration_date")
     val expirationDate: String,
+    @SerializedName("expiration_date_debug_tags")
+    val expirationDateDebugTags: List<Any>,
+    @SerializedName("fruits-vegetables-nuts_100g_estimate")
+    val fruitsVegetablesNuts100gEstimate: Int,
     @SerializedName("generic_name")
     val genericName: String,
-    @SerializedName("generic_name_de")
-    val genericNameDe: String,
-    @SerializedName("generic_name_fr")
-    val genericNameFr: String,
-    @SerializedName("generic_name_pl")
-    val genericNamePl: String,
-    @SerializedName("id")
-    val id: String,
+    @SerializedName("generic_name_en")
+    val genericNameEn: String,
+    @SerializedName("generic_name_en_debug_tags")
+    val genericNameEnDebugTags: List<Any>,
     @SerializedName("_id")
     val id: String,
     @SerializedName("image_front_small_url")
@@ -148,6 +170,8 @@ data class Product(
     val imageUrl: String,
     @SerializedName("images")
     val images: Images,
+    @SerializedName("informers")
+    val informers: List<String>,
     @SerializedName("informers_tags")
     val informersTags: List<String>,
     @SerializedName("ingredients")
@@ -178,24 +202,18 @@ data class Product(
     val ingredientsTags: List<String>,
     @SerializedName("ingredients_text")
     val ingredientsText: String,
-    @SerializedName("ingredients_text_de")
-    val ingredientsTextDe: String,
     @SerializedName("ingredients_text_debug")
     val ingredientsTextDebug: String,
-    @SerializedName("ingredients_text_debug_tags")
-    val ingredientsTextDebugTags: List<Any>,
-    @SerializedName("ingredients_text_fr")
-    val ingredientsTextFr: String,
-    @SerializedName("ingredients_text_pl")
-    val ingredientsTextPl: String,
+    @SerializedName("ingredients_text_en")
+    val ingredientsTextEn: String,
+    @SerializedName("ingredients_text_en_debug_tags")
+    val ingredientsTextEnDebugTags: List<Any>,
+    @SerializedName("ingredients_text_en_imported")
+    val ingredientsTextEnImported: String,
     @SerializedName("ingredients_text_with_allergens")
     val ingredientsTextWithAllergens: String,
-    @SerializedName("ingredients_text_with_allergens_de")
-    val ingredientsTextWithAllergensDe: String,
-    @SerializedName("ingredients_text_with_allergens_fr")
-    val ingredientsTextWithAllergensFr: String,
-    @SerializedName("ingredients_text_with_allergens_pl")
-    val ingredientsTextWithAllergensPl: String,
+    @SerializedName("ingredients_text_with_allergens_en")
+    val ingredientsTextWithAllergensEn: String,
     @SerializedName("ingredients_that_may_be_from_palm_oil_n")
     val ingredientsThatMayBeFromPalmOilN: Int,
     @SerializedName("ingredients_that_may_be_from_palm_oil_tags")
@@ -211,13 +229,19 @@ data class Product(
     @SerializedName("labels")
     val labels: String,
     @SerializedName("labels_hierarchy")
-    val labelsHierarchy: List<Any>,
+    val labelsHierarchy: List<String>,
     @SerializedName("labels_lc")
     val labelsLc: String,
+    @SerializedName("labels_prev_hierarchy")
+    val labelsPrevHierarchy: List<String>,
+    @SerializedName("labels_prev_tags")
+    val labelsPrevTags: List<String>,
     @SerializedName("labels_tags")
-    val labelsTags: List<Any>,
+    val labelsTags: List<String>,
     @SerializedName("lang")
     val lang: String,
+    @SerializedName("lang_debug_tags")
+    val langDebugTags: List<Any>,
     @SerializedName("languages")
     val languages: Languages,
     @SerializedName("languages_codes")
@@ -240,10 +264,16 @@ data class Product(
     val lastModifiedT: Int,
     @SerializedName("lc")
     val lc: String,
+    @SerializedName("lc_imported")
+    val lcImported: String,
     @SerializedName("link")
     val link: String,
+    @SerializedName("link_debug_tags")
+    val linkDebugTags: List<Any>,
     @SerializedName("manufacturing_places")
     val manufacturingPlaces: String,
+    @SerializedName("manufacturing_places_debug_tags")
+    val manufacturingPlacesDebugTags: List<Any>,
     @SerializedName("manufacturing_places_tags")
     val manufacturingPlacesTags: List<Any>,
     @SerializedName("max_imgid")
@@ -254,14 +284,14 @@ data class Product(
     val mineralsTags: List<Any>,
     @SerializedName("misc_tags")
     val miscTags: List<String>,
+    @SerializedName("new_additives_n")
+    val newAdditivesN: Int,
     @SerializedName("no_nutrition_data")
     val noNutritionData: String,
     @SerializedName("nova_group")
     val novaGroup: Int,
     @SerializedName("nova_group_debug")
     val novaGroupDebug: String,
-    @SerializedName("nova_group_tags")
-    val novaGroupTags: List<String>,
     @SerializedName("nova_groups")
     val novaGroups: String,
     @SerializedName("nova_groups_tags")
@@ -286,10 +316,18 @@ data class Product(
     val nutritionData: String,
     @SerializedName("nutrition_data_per")
     val nutritionDataPer: String,
+    @SerializedName("nutrition_data_per_debug_tags")
+    val nutritionDataPerDebugTags: List<Any>,
+    @SerializedName("nutrition_data_per_imported")
+    val nutritionDataPerImported: String,
     @SerializedName("nutrition_data_prepared")
     val nutritionDataPrepared: String,
     @SerializedName("nutrition_data_prepared_per")
     val nutritionDataPreparedPer: String,
+    @SerializedName("nutrition_data_prepared_per_debug_tags")
+    val nutritionDataPreparedPerDebugTags: List<Any>,
+    @SerializedName("nutrition_data_prepared_per_imported")
+    val nutritionDataPreparedPerImported: String,
     @SerializedName("nutrition_grade_fr")
     val nutritionGradeFr: String,
     @SerializedName("nutrition_grades")
@@ -298,20 +336,26 @@ data class Product(
     val nutritionGradesTags: List<String>,
     @SerializedName("nutrition_score_beverage")
     val nutritionScoreBeverage: Int,
-    @SerializedName("nutrition_score_warning_fruits_vegetables_nuts_from_category")
-    val nutritionScoreWarningFruitsVegetablesNutsFromCategory: String,
-    @SerializedName("nutrition_score_warning_fruits_vegetables_nuts_from_category_value")
-    val nutritionScoreWarningFruitsVegetablesNutsFromCategoryValue: Int,
+    @SerializedName("nutrition_score_warning_fruits_vegetables_nuts_estimate_from_ingredients")
+    val nutritionScoreWarningFruitsVegetablesNutsEstimateFromIngredients: Int,
+    @SerializedName("nutrition_score_warning_fruits_vegetables_nuts_estimate_from_ingredients_value")
+    val nutritionScoreWarningFruitsVegetablesNutsEstimateFromIngredientsValue: Int,
     @SerializedName("origins")
     val origins: String,
+    @SerializedName("origins_debug_tags")
+    val originsDebugTags: List<Any>,
     @SerializedName("origins_tags")
-    val originsTags: List<Any>,
+    val originsTags: List<String>,
     @SerializedName("other_nutritional_substances_tags")
     val otherNutritionalSubstancesTags: List<Any>,
     @SerializedName("packaging")
     val packaging: String,
+    @SerializedName("packaging_debug_tags")
+    val packagingDebugTags: List<Any>,
     @SerializedName("packaging_tags")
     val packagingTags: List<String>,
+    @SerializedName("photographers")
+    val photographers: List<String>,
     @SerializedName("photographers_tags")
     val photographersTags: List<String>,
     @SerializedName("pnns_groups_1")
@@ -326,30 +370,44 @@ data class Product(
     val popularityTags: List<String>,
     @SerializedName("product_name")
     val productName: String,
-    @SerializedName("product_name_de")
-    val productNameDe: String,
-    @SerializedName("product_name_debug_tags")
-    val productNameDebugTags: List<Any>,
-    @SerializedName("product_name_fr")
-    val productNameFr: String,
-    @SerializedName("product_name_pl")
-    val productNamePl: String,
+    @SerializedName("product_name_en")
+    val productNameEn: String,
+    @SerializedName("product_name_en_debug_tags")
+    val productNameEnDebugTags: List<Any>,
+    @SerializedName("product_name_en_imported")
+    val productNameEnImported: String,
     @SerializedName("product_quantity")
     val productQuantity: Int,
     @SerializedName("purchase_places")
     val purchasePlaces: String,
+    @SerializedName("purchase_places_debug_tags")
+    val purchasePlacesDebugTags: List<Any>,
     @SerializedName("purchase_places_tags")
     val purchasePlacesTags: List<Any>,
     @SerializedName("quantity")
     val quantity: String,
+    @SerializedName("quantity_debug_tags")
+    val quantityDebugTags: List<Any>,
     @SerializedName("rev")
     val rev: Int,
     @SerializedName("scans_n")
     val scansN: Int,
     @SerializedName("selected_images")
     val selectedImages: SelectedImages,
+    @SerializedName("serving_quantity")
+    val servingQuantity: Int,
+    @SerializedName("serving_size")
+    val servingSize: String,
+    @SerializedName("serving_size_debug_tags")
+    val servingSizeDebugTags: List<Any>,
+    @SerializedName("serving_size_imported")
+    val servingSizeImported: String,
     @SerializedName("sortkey")
     val sortkey: Long,
+    @SerializedName("sources")
+    val sources: List<Source>,
+    @SerializedName("sources_fields")
+    val sourcesFields: SourcesFields,
     @SerializedName("states")
     val states: String,
     @SerializedName("states_hierarchy")
@@ -358,20 +416,22 @@ data class Product(
     val statesTags: List<String>,
     @SerializedName("stores")
     val stores: String,
+    @SerializedName("stores_debug_tags")
+    val storesDebugTags: List<Any>,
     @SerializedName("stores_tags")
     val storesTags: List<Any>,
     @SerializedName("traces")
     val traces: String,
+    @SerializedName("traces_debug_tags")
+    val tracesDebugTags: List<Any>,
     @SerializedName("traces_from_ingredients")
     val tracesFromIngredients: String,
     @SerializedName("traces_from_user")
     val tracesFromUser: String,
     @SerializedName("traces_hierarchy")
-    val tracesHierarchy: List<Any>,
-    @SerializedName("traces_lc")
-    val tracesLc: String,
+    val tracesHierarchy: List<String>,
     @SerializedName("traces_tags")
-    val tracesTags: List<Any>,
+    val tracesTags: List<String>,
     @SerializedName("unique_scans_n")
     val uniqueScansN: Int,
     @SerializedName("unknown_ingredients_n")

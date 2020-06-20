@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface FoodService {
 
-    @GET("/5900397017412.json")
+    @GET("737628064502.json")
     fun getFoodAsync() :Deferred<Response<Food>>
 
 }

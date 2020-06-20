@@ -4,10 +4,16 @@ package com.example.foodpoint.api.food_class
 import com.google.gson.annotations.SerializedName
 
 data class Nutrition(
-    @SerializedName("display")
-    val display: DisplayXX,
-    @SerializedName("small")
-    val small: SmallXX,
-    @SerializedName("thumb")
-    val thumb: ThumbXX
+    @SerializedName("geometry")
+    val geometry: String,
+    @SerializedName("imgid")
+    val imgid: String,
+    @SerializedName("normalize")
+    val normalize: String,
+    @SerializedName("rev")
+    val rev: String,
+    @SerializedName("sizes")
+    val sizes: SizesXXXX,
+    @SerializedName("white_magic")
+    val whiteMagic: Any
 )

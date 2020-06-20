@@ -3,13 +3,11 @@ package com.example.foodpoint.api.food_class
 
 import com.google.gson.annotations.SerializedName
 
-data class SizesXXXXX(
+data class SizesXXXXXXXXXX(
     @SerializedName("full")
-    val full: FullXXXXX,
+    val full: FullXXXXXXXXXX,
     @SerializedName("100")
-    val x100: X100XXXXX,
-    @SerializedName("200")
-    val x200: X200XXXXX,
+    val x100: X100XXXXXXXXXX,
     @SerializedName("400")
-    val x400: X400XXXXX
+    val x400: X400XXXXXXXXXX
 )
