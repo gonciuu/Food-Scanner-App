@@ -19,7 +19,7 @@ data class Nutriments(
     @SerializedName("carbohydrates_100g")
     val carbohydrates100g: Double,
     @SerializedName("carbohydrates_serving")
-    val carbohydratesServing: Int,
+    val carbohydratesServing: Double,
     @SerializedName("carbohydrates_unit")
     val carbohydratesUnit: String,
     @SerializedName("carbohydrates_value")
@@ -59,7 +59,7 @@ data class Nutriments(
     @SerializedName("fat_100g")
     val fat100g: Double,
     @SerializedName("fat_serving")
-    val fatServing: Int,
+    val fatServing: Double,
     @SerializedName("fat_unit")
     val fatUnit: String,
     @SerializedName("fat_value")
@@ -103,7 +103,7 @@ data class Nutriments(
     @SerializedName("proteins_100g")
     val proteins100g: Double,
     @SerializedName("proteins_serving")
-    val proteinsServing: Int,
+    val proteinsServing: Double,
     @SerializedName("proteins_unit")
     val proteinsUnit: String,
     @SerializedName("proteins_value")
@@ -143,7 +143,7 @@ data class Nutriments(
     @SerializedName("sugars_100g")
     val sugars100g: Double,
     @SerializedName("sugars_serving")
-    val sugarsServing: Int,
+    val sugarsServing: Double,
     @SerializedName("sugars_unit")
     val sugarsUnit: String,
     @SerializedName("sugars_value")

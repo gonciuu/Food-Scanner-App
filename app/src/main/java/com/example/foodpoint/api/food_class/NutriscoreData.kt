@@ -51,7 +51,7 @@ data class NutriscoreData(
     @SerializedName("saturated_fat_ratio_points")
     val saturatedFatRatioPoints: Int,
     @SerializedName("saturated_fat_ratio_value")
-    val saturatedFatRatioValue: Int,
+    val saturatedFatRatioValue: Double,
     @SerializedName("saturated_fat_value")
     val saturatedFatValue: Double,
     @SerializedName("score")
