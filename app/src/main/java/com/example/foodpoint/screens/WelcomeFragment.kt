@@ -19,28 +19,53 @@ import kotlinx.coroutines.launch
 
 class WelcomeFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_welcome, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupViewPager()
+        getApi()
+    }
+    
+
+    private fun getApi() {
+        var food: Food? = null
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                food = RetrofitClient.instance.getFoodAsync().await().body()
+                Log.d("TAG", food!!.product.productName)
+            } catch (ex: Exception) {
+                Log.d("TAG", ex.message!!)
+            }
+        }
+    }
+
+    private fun setupViewPager() {
         val listOfPagerCard = arrayListOf<ViewPagerCard>(
-            ViewPagerCard("Welcome to Food Point","Please give access your camera so that we can scan and provide you that what\nis inside the food"),
-            ViewPagerCard("Simply get food data","Simply scan your food barcode and get information about us ingredients\nnutrition and etc... "),
-            ViewPagerCard("Get health's nutrition","In that app you can get information about if scaned food is t\n healthy or not")
+            ViewPagerCard(
+                "Welcome to Food Point",
+                "Please give access your camera so that we can scan and provide you that what\nis inside the food"
+            ),
+            ViewPagerCard(
+                "Simply get food data",
+                "Simply scan your food barcode and get information about us ingredients\nnutrition and etc... "
+            ),
+            ViewPagerCard(
+                "Get health's nutrition",
+                "In that app you can get information about if scaned food is t\n healthy or not"
+            )
         )
 
-        welcomeViewPager.adapter =
-            WelcomePagerAdapter(
-                context,
-                listOfPagerCard
-            )
+        welcomeViewPager.adapter = WelcomePagerAdapter(context, listOfPagerCard)
         welcomePagerDots.setupWithViewPager(welcomeViewPager)
         welcomeViewPager.invalidate()
-
-
 
 
         for (i in 0 until welcomePagerDots.tabCount) {
@@ -53,18 +78,6 @@ class WelcomeFragment : Fragment() {
             findNavController().navigate(R.id.action_welcomeFragment_to_homeFragment)
         }
 
-        getApi()
-    }
-        var food : Food? = null
-        private fun getApi(){
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                food = RetrofitClient.instance.getFoodAsync().await().body()
-                Log.d("TAG",food!!.product.productName)
-            }catch (ex:Exception){
-                Log.d("TAG",ex.message!!)
-            }
-        }
     }
 }
 
