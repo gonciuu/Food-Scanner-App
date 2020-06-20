@@ -10,16 +10,16 @@
         android:name="com.example.foodpoint.screens.WelcomeFragment"
         android:label="WelcomeFragment" >
         <action
-            android:id="@+id/action_welcomeFragment_to_scanFragment"
-            app:destination="@id/scanFragment" />
+            android:id="@+id/action_welcomeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/scanFragment"
         android:name="com.example.foodpoint.screens.ScanFragment"
         android:label="ScanFragment" >
         <action
-            android:id="@+id/action_scanFragment_to_scanHistoryFragment"
-            app:destination="@id/scanHistoryFragment" />
+            android:id="@+id/action_scanFragment_to_foodDetailsFragment"
+            app:destination="@id/foodDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/scanHistoryFragment"
@@ -27,16 +27,16 @@
         android:label="fragment_scan_history"
         tools:layout="@layout/fragment_scan_history" >
         <action
-            android:id="@+id/action_scanHistoryFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            android:id="@+id/action_scanHistoryFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.foodpoint.screens.SettingsFragment"
         android:label="SettingsFragment" >
         <action
-            android:id="@+id/action_settingsFragment_to_foodDetailsFragment"
-            app:destination="@id/foodDetailsFragment" />
+            android:id="@+id/action_settingsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailsFragment"
@@ -49,5 +49,15 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.foodpoint.screens.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_scanHistoryFragment"
+            app:destination="@id/scanHistoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_scanFragment"
+            app:destination="@id/scanFragment" />
+    </fragment>
 </navigation>
