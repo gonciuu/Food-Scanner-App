@@ -182,7 +182,7 @@
         app:fabCradleMargin="7dp"
         app:fabCradleRoundedCornerRadius="50dp"
         app:fabCradleVerticalOffset="12dp"
-        app:labelVisibilityMode="labeled"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_nav_menu"
         app:navigationIcon="@drawable/ic_history" />
 
