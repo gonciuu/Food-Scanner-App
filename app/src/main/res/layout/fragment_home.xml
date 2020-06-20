@@ -7,8 +7,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:background="#E4E4E4"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#E4E4E4">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,8 +73,8 @@
 
                     <ImageView
                         android:layout_width="100dp"
-                        android:layout_gravity="center"
                         android:layout_height="190dp"
+                        android:layout_gravity="center"
                         android:contentDescription="TODO"
                         android:src="@drawable/zdj" />
 
@@ -99,15 +99,15 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:drawableLeft="@drawable/green_circle"
+                            android:drawablePadding="10dp"
                             android:ellipsize="end"
                             android:fontFamily="@font/segoeuib"
                             android:maxLines="1"
                             android:paddingLeft="20dp"
                             android:paddingRight="15dp"
                             android:text="Calories : 254"
-                            android:drawableLeft="@drawable/green_circle"
-                            android:drawablePadding="10dp"
-                            android:layout_marginTop="5dp"
                             android:textColor="@color/darkGray"
                             android:textSize="14sp" />
 
@@ -128,18 +128,18 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Check"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="77dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="77dp"
+                            android:layout_marginBottom="10dp"
                             android:background="@drawable/rounded_bg"
                             android:backgroundTint="@color/orange"
-                            android:layout_marginTop="15dp"
-                            android:textAlignment="center"
+                            android:fontFamily="@font/segoeuib"
                             android:padding="9dp"
-                            android:layout_marginRight="77dp"
-                            android:layout_marginLeft="77dp"
-                            android:layout_gravity="center"
-                            android:textColor="@color/white"
-                            android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/segoeuib"/>
+                            android:text="Check"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                     </LinearLayout>
 
@@ -163,8 +163,8 @@
                 android:id="@+id/popularFoodsRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="100dp"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="2dp"
+                android:paddingBottom="100dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -187,6 +187,7 @@
         app:navigationIcon="@drawable/ic_history" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/scanButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_scan"
