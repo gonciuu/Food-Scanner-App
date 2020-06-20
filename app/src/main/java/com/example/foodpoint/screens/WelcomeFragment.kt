@@ -50,7 +50,7 @@ class WelcomeFragment : Fragment() {
         }
 
         startButton.setOnClickListener {
-            findNavController().navigate(R.id.action_welcomeFragment_to_scanFragment)
+            findNavController().navigate(R.id.action_welcomeFragment_to_homeFragment)
         }
 
         getApi()

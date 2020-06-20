@@ -19,7 +19,7 @@ class ScanFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         button.setOnClickListener {
-            findNavController().navigate(R.id.action_scanFragment_to_scanHistoryFragment)
+            findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment)
         }
     }
 }

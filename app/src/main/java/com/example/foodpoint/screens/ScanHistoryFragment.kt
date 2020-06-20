@@ -23,7 +23,7 @@ class ScanHistoryFragment : Fragment() {
             adapter = HistoryRecyclerViewAdapter()
         }
         getAllHistoryButton.setOnClickListener {
-            findNavController().navigate(R.id.action_scanHistoryFragment_to_settingsFragment)
+            findNavController().navigate(R.id.action_scanHistoryFragment_to_homeFragment)
         }
     }
 

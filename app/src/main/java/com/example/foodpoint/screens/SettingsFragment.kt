@@ -20,7 +20,7 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         nightMode.setOnClickListener {
-            findNavController().navigate(R.id.action_settingsFragment_to_foodDetailsFragment)
+            findNavController().navigate(R.id.action_settingsFragment_to_homeFragment)
         }
     }
 }
