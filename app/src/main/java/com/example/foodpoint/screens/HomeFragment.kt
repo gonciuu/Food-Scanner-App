@@ -35,20 +35,18 @@ class HomeFragment : Fragment() {
         bottomAppBar.setOnMenuItemClickListener { menuItem ->
             when(menuItem.itemId){
                 R.id.menuSettings->{
-                    Log.d("TAG","settings")
+                    findNavController().navigate(R.id.action_homeFragment_to_settingsFragment)
                     true
                 }
                 else->{
-                    Log.d("TAG","nic")
                     true
                 }
             }
         }
-
+        
         bottomAppBar.setNavigationOnClickListener {
-            Log.d("TAG","archiwum ")
+            findNavController().navigate(R.id.action_homeFragment_to_scanHistoryFragment)
         }
-
 
     }
 
