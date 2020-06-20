@@ -22,5 +22,9 @@ class SettingsFragment : Fragment() {
         nightMode.setOnClickListener {
             findNavController().navigate(R.id.action_settingsFragment_to_homeFragment)
         }
+
+        settingsBackButton.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsFragment_to_homeFragment)
+        }
     }
 }
