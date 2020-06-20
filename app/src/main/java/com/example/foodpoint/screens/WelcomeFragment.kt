@@ -64,10 +64,7 @@ class WelcomeFragment : Fragment() {
             }catch (ex:Exception){
                 Log.d("TAG",ex.message!!)
             }
-
         }
-
     }
-
 }
 

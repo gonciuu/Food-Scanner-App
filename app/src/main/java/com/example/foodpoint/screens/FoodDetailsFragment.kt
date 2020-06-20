@@ -19,8 +19,16 @@ class FoodDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageView3.setOnClickListener {
+        setupNavigation()
+    }
+
+    private fun setupNavigation(){
+
+        backToHomeButton.setOnClickListener {
             findNavController().navigate(R.id.action_foodDetailsFragment_to_homeFragment)
+        }
+        scanAgainButton.setOnClickListener {
+            findNavController().navigate(R.id.action_foodDetailsFragment_to_scanFragment)
         }
     }
 }

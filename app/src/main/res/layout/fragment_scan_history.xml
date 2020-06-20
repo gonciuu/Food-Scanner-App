@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <TextView
-            android:id="@+id/button2"
+            android:id="@+id/todayButton"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -59,14 +59,14 @@
             android:text="Today"
             android:textAllCaps="false"
             android:textColor="#fff"
-            app:layout_constraintEnd_toStartOf="@+id/getAllHistoryButton"
+            app:layout_constraintEnd_toStartOf="@+id/allButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <TextView
-            android:id="@+id/getAllHistoryButton"
+            android:id="@+id/allButton"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -84,7 +84,7 @@
             android:textColor="#313131"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintStart_toEndOf="@+id/todayButton"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -96,7 +96,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/todayButton" />
 
         <ImageView
             android:id="@+id/scanHistoryBackButton"
