@@ -18,8 +18,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView
 class ScanBarcodeCameraViewFragment : Fragment(),ZXingScannerView.ResultHandler {
 
     private lateinit var scanViewModel: ScanViewModel
-
-
+    private var isFocus = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,14 +29,24 @@ class ScanBarcodeCameraViewFragment : Fragment(),ZXingScannerView.ResultHandler 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(savedInstanceState!=null){
+            if(savedInstanceState.containsKey("isFocus")){
+                isFocus = savedInstanceState.getBoolean("isFocus")
+            }
+        }
         scanViewModel = ViewModelProvider(requireActivity()).get(ScanViewModel::class.java)
+        cameraButtonsFunctions()
     }
+
+
 
     override fun onResume() {
         super.onResume()
         scanBarcodeView.setResultHandler(this)
         scanBarcodeView.startCamera()
     }
+
+
 
     override fun handleResult(rawResult: Result?) {
         if(rawResult!=null){
@@ -46,7 +55,6 @@ class ScanBarcodeCameraViewFragment : Fragment(),ZXingScannerView.ResultHandler 
         }else{
             scanBarcodeView.resumeCameraPreview(this)
         }
-
     }
 
     override fun onPause() {
@@ -54,4 +62,20 @@ class ScanBarcodeCameraViewFragment : Fragment(),ZXingScannerView.ResultHandler 
         scanBarcodeView.stopCamera()
     }
 
+
+    private fun cameraButtonsFunctions(){
+        focusButton.setOnClickListener {
+            isFocus = !isFocus
+            scanBarcodeView.setAutoFocus(isFocus)
+            Log.d("TAG",isFocus.toString())
+        }
+        flashlightButton.setOnClickListener {
+            scanBarcodeView.flash = !scanBarcodeView.flash
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("isFocus",isFocus)
+    }
 }

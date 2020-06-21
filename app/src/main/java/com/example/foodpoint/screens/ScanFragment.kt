@@ -23,6 +23,10 @@ class ScanFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
+
+
         scanViewModel = ViewModelProvider(requireActivity()).get(ScanViewModel::class.java)
         scanViewModel.getBarcodeNumber().observe(viewLifecycleOwner, Observer {
             t->
@@ -41,4 +45,8 @@ class ScanFragment : Fragment() {
             findNavController().navigate(R.id.action_scanFragment_to_scanBarcodeCameraViewFragment)
         }
     }
+
+
+
+
 }
