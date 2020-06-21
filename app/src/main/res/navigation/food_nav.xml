@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_scanFragment_to_foodDetailsFragment"
             app:destination="@id/foodDetailsFragment" />
+        <action
+            android:id="@+id/action_scanFragment_to_scanBarcodeCameraViewFragment"
+            app:destination="@id/scanBarcodeCameraViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/scanHistoryFragment"
@@ -63,4 +66,9 @@
             android:id="@+id/action_homeFragment_to_scanFragment"
             app:destination="@id/scanFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/scanBarcodeCameraViewFragment"
+        android:name="com.example.foodpoint.screens.ScanBarcodeCameraViewFragment"
+        android:label="fragment_scan_barcode_camera_view"
+        tools:layout="@layout/fragment_scan_barcode_camera_view" />
 </navigation>

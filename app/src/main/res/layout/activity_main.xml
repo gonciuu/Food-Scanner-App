@@ -18,4 +18,5 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/food_nav" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,5 +21,9 @@ class ScanFragment : Fragment() {
         button.setOnClickListener {
             findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment)
         }
+
+        scanImage.setOnClickListener {
+            findNavController().navigate(R.id.action_scanFragment_to_scanBarcodeCameraViewFragment)
+        }
     }
 }
