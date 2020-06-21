@@ -70,5 +70,9 @@
         android:id="@+id/scanBarcodeCameraViewFragment"
         android:name="com.example.foodpoint.screens.ScanBarcodeCameraViewFragment"
         android:label="fragment_scan_barcode_camera_view"
-        tools:layout="@layout/fragment_scan_barcode_camera_view" />
+        tools:layout="@layout/fragment_scan_barcode_camera_view" >
+        <action
+            android:id="@+id/action_scanBarcodeCameraViewFragment_to_scanFragment"
+            app:destination="@id/scanFragment" />
+    </fragment>
 </navigation>
