@@ -49,7 +49,7 @@ class ScanFragment : Fragment() {
 
         showFoodDetailsButton.setOnClickListener {
             showScanLabelAnimation()
-            getFoodInfo()
+            getFoodInfo(barcodeET.text.toString())
         }
 
         scanImage.setOnClickListener {
@@ -104,10 +104,10 @@ class ScanFragment : Fragment() {
 
     //----------GET FOOD INFO FROM JSON FUNCTION AND GO TO NEXT SCREEN WHEN THE INFO WAS GOT----------------
 
-    private fun getFoodInfo() {
+    private fun getFoodInfo(foodBarcodeNumber:String) {
         try {
             CoroutineScope(Dispatchers.IO).launch {
-                food = RetrofitClient.instance.getFoodAsync().await().body()!!
+                food = RetrofitClient.instance.getFoodAsync(foodBarcodeNumber).await().body()!!
                 Log.d("TAG", food.product.productName)
                 requireActivity().runOnUiThread {
                     handler.postDelayed({findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment)},3000)

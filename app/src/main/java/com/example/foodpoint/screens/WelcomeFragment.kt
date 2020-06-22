@@ -66,7 +66,7 @@ class WelcomeFragment : Fragment() {
         var food: Food? = null
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                food = RetrofitClient.instance.getFoodAsync().await().body()
+                food = RetrofitClient.instance.getFoodAsync("5900951027307").await().body()
                 Log.d("TAG", food!!.product.productName)
             } catch (ex: Exception) {
                 Log.d("TAG", ex.message!!)
