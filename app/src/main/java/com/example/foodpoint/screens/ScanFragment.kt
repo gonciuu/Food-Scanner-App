@@ -57,10 +57,15 @@ class ScanFragment : Fragment() {
     }
 
     private fun showScanLabelAnimation(){
-        setAnim(scanLabel,1500,200f)
-        Handler().postDelayed({setAnim(scanLabel,2000,-200f)},750)
-        Handler().postDelayed({setAnim(scanLabel,2000,200f)},1750)
-        Handler().postDelayed({setAnim(scanLabel,2000,-200f)},2750)
+        try{
+            setAnim(scanLabel,1500,200f)
+            Handler().postDelayed({setAnim(scanLabel,2000,-200f)},750)
+            Handler().postDelayed({setAnim(scanLabel,2000,200f)},1750)
+            Handler().postDelayed({setAnim(scanLabel,2000,-200f)},2750)
+        }catch (ex:Exception){
+
+        }
+
     }
 
 
