@@ -24,14 +24,13 @@ import kotlinx.coroutines.runBlocking
 
 
 class ScanFragment : Fragment() {
+
     private lateinit var scanViewModel: ScanViewModel
     private lateinit var food: Food
     private var handler:Handler = Handler()
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_scan, container, false)
     }
 
@@ -44,8 +43,10 @@ class ScanFragment : Fragment() {
     }
 
 
+    //--------------------------------------ADD BUTTON CLICK TO SCAN BARCODES-----------------------------------------
+
     private fun setupFragment() {
-        
+
         showFoodDetailsButton.setOnClickListener {
             showScanLabelAnimation()
             getFoodInfo()
@@ -56,6 +57,10 @@ class ScanFragment : Fragment() {
         }
     }
 
+    //===============================================================================================================
+
+
+    //----------------------------GET BARCODE CODE FROM VIEWMODEL-----------------------------------
 
     private fun getBarCode() {
         scanViewModel.getBarcodeNumber().observe(viewLifecycleOwner, Observer { t ->
@@ -69,6 +74,10 @@ class ScanFragment : Fragment() {
         })
     }
 
+    //==============================================================================================
+
+
+    //----------------------SET ANIMATIONS ON LABEL WHICH IS ON BARCODE (LIKE SCAN ANIMATION)-------------------------
 
     private fun showScanLabelAnimation() {
         try {
@@ -76,10 +85,13 @@ class ScanFragment : Fragment() {
             handler.postDelayed({ setAnim(scanLabel, 2000, -200f) }, 750)
             handler.postDelayed({ setAnim(scanLabel, 2000, 200f) }, 1750)
             handler.postDelayed({ setAnim(scanLabel, 2000, -200f) }, 2750)
-        } catch (ex: Exception) {
-        }
+        } catch (ex: Exception) { }
     }
 
+    //==================================================================================================================
+
+
+    //-------------------OBJECT TRANSFORM ANIMATION--------------------------
 
     private fun setAnim(v: View, durationTime: Long, value: Float) {
         ObjectAnimator.ofFloat(v, "translationY", value).apply {
@@ -88,6 +100,9 @@ class ScanFragment : Fragment() {
         }
     }
 
+    //========================================================================
+
+    //----------GET FOOD INFO FROM JSON FUNCTION AND GO TO NEXT SCREEN WHEN THE INFO WAS GOT----------------
 
     private fun getFoodInfo() {
         try {
@@ -101,8 +116,12 @@ class ScanFragment : Fragment() {
         }catch (ex:Exception){ }
     }
 
+    //=======================================================================================================
+
+
+
     override fun onPause() {
         super.onPause()
-        handler.removeCallbacksAndMessages(null)
+        handler.removeCallbacksAndMessages(null) //REMOVE ALL CALLBACKS FROM HANDLER
     }
 }
