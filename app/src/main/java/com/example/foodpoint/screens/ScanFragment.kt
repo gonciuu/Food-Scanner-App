@@ -1,6 +1,8 @@
 package com.example.foodpoint.screens
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,23 +24,31 @@ class ScanFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
-
-
         scanViewModel = ViewModelProvider(requireActivity()).get(ScanViewModel::class.java)
+
+        getBarCode()
+        setupFragment()
+
+    }
+
+
+    private fun getBarCode(){
         scanViewModel.getBarcodeNumber().observe(viewLifecycleOwner, Observer {
-            t->
+                t->
             if(t!=null){
                 Log.d("TAG",t)
+                barcodeET.setText(t)
+                showFoodDetailsButton.performClick()
             }else{
                 Log.d("TAG","BRAK")
             }
         })
+    }
 
-        button.setOnClickListener {
-            findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment)
+    private fun setupFragment(){
+        showFoodDetailsButton.setOnClickListener {
+            showScanLabelAnimation()
+            Handler().postDelayed({findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment)},4000)
         }
 
         scanImage.setOnClickListener {
@@ -46,7 +56,19 @@ class ScanFragment : Fragment() {
         }
     }
 
+    private fun showScanLabelAnimation(){
+        setAnim(scanLabel,1500,200f)
+        Handler().postDelayed({setAnim(scanLabel,2000,-200f)},750)
+        Handler().postDelayed({setAnim(scanLabel,2000,200f)},1750)
+        Handler().postDelayed({setAnim(scanLabel,2000,-200f)},2750)
+    }
 
 
+    private fun setAnim(v:View,durationTime:Long,value:Float){
+        ObjectAnimator.ofFloat(v, "translationY", value).apply {
+            duration = durationTime
+            start()
+        }
+    }
 
 }
