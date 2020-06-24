@@ -13,8 +13,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.foodpoint.R
 import com.example.foodpoint.api.food_class.Food
+import com.example.foodpoint.api.food_class.Ingredient
+import com.example.foodpoint.api.food_class.food_class_to_communicate_wwith_others.SimplyfiFood
 import com.example.foodpoint.api.service.FoodService
 import com.example.foodpoint.api.service.RetrofitClient
+import com.example.foodpoint.screens.view_models.FoodInfoViewModel
 import com.example.foodpoint.screens.view_models.ScanViewModel
 import kotlinx.android.synthetic.main.fragment_scan.*
 import kotlinx.coroutines.CoroutineScope
@@ -26,6 +29,7 @@ import kotlinx.coroutines.runBlocking
 class ScanFragment : Fragment() {
 
     private lateinit var scanViewModel: ScanViewModel
+    private lateinit var foodInfoViewModel: FoodInfoViewModel
     private lateinit var food: Food
     private var handler:Handler = Handler()
 
@@ -37,6 +41,7 @@ class ScanFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         scanViewModel = ViewModelProvider(requireActivity()).get(ScanViewModel::class.java)
+        foodInfoViewModel = ViewModelProvider(requireActivity()).get(FoodInfoViewModel::class.java)
 
         getBarCode()
         setupFragment()
@@ -108,8 +113,17 @@ class ScanFragment : Fragment() {
         try {
             CoroutineScope(Dispatchers.IO).launch {
                 food = RetrofitClient.instance.getFoodAsync(foodBarcodeNumber).await().body()!!
-                Log.d("TAG", food.product.productName)
+
                 requireActivity().runOnUiThread {
+                    foodInfoViewModel.setFood(SimplyfiFood(
+                        food.product.productName,
+                        food.product.nutriments.energyKcal,
+                        food.product.nutriments.carbohydrates,
+                        food.product.nutriments.proteins,
+                        food.product.nutriments.fat,
+                        food.product.ingredients as ArrayList<Ingredient>,
+                        food.product.categoriesTags as ArrayList<String>,
+                        food.product.allergensTags.toList() as ArrayList<String>))
                     handler.postDelayed({findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment)},3000)
                 }
             }
