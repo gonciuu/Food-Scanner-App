@@ -115,16 +115,19 @@ class ScanFragment : Fragment() {
                 food = RetrofitClient.instance.getFoodAsync(foodBarcodeNumber).await().body()!!
 
                 requireActivity().runOnUiThread {
+                    var listOfAllergens = arrayListOf<String>()
+                    if(food.product.allergensTags.isNotEmpty()) listOfAllergens = food.product.allergensTags.toList() as ArrayList<String>
                     foodInfoViewModel.setFood(SimplyfiFood(
                         food.product.productName,
                         food.product.productQuantity,
+                        food.product.imageFrontUrl,
                         food.product.nutriments.energyKcal,
                         food.product.nutriments.carbohydrates,
                         food.product.nutriments.proteins,
                         food.product.nutriments.fat,
                         food.product.ingredients as ArrayList<Ingredient>,
                         food.product.categoriesTags as ArrayList<String>,
-                        food.product.allergensTags.toList() as ArrayList<String>))
+                        listOfAllergens))
                     handler.postDelayed({findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment)},3000)
                 }
             }

@@ -9,7 +9,7 @@ class ScanViewModel : ViewModel() {
     private val scanBarcodeNumber = MutableLiveData<String>()
 
 
-    fun setBarcodeNumber(code:String){
+    fun setBarcodeNumber(code:String?){
         scanBarcodeNumber.value = code
     }
 
