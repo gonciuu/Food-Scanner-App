@@ -113,7 +113,6 @@ class ScanFragment : Fragment() {
         try {
             CoroutineScope(Dispatchers.IO).launch {
                 food = RetrofitClient.instance.getFoodAsync(foodBarcodeNumber).await().body()!!
-
                 requireActivity().runOnUiThread {
                     var listOfAllergens = arrayListOf<String>()
                     if(food.product.allergensTags.isNotEmpty()) listOfAllergens = food.product.allergensTags.toList() as ArrayList<String>

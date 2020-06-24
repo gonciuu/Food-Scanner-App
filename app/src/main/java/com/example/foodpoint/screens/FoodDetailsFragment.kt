@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -53,7 +52,20 @@ class FoodDetailsFragment : Fragment() {
         carbohydratesCount.text = (food.carbohydrates * (food.quantity/100)).toString() + " g"
         proteinsCount.text = (food.proteins * (food.quantity/100)).toString()+ " g"
         fatCount.text = (food.fats * (food.quantity/100)).toString()+ " g"
+        foodName.text = food.name
+        setFoodCategories()
         setImage()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setFoodCategories() {
+        food.categories.forEach {
+            foodCategories.text  = foodCategories.text.toString() + removeLanguageTags(it) + ", "
+        }
+    }
+
+    private fun removeLanguageTags(str:String) : String{
+        return str.removeRange(0,str.indexOf(":")+1)
     }
 
 
