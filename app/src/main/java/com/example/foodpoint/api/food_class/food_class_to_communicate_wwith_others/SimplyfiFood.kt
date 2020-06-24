@@ -4,6 +4,7 @@ import com.example.foodpoint.api.food_class.Ingredient
 
 class SimplyfiFood(
     val name: String,
+    val quantity:Int,
     val calories: Int,
     val carbohydrates: Double,
     val proteins: Double,

@@ -1,5 +1,6 @@
 package com.example.foodpoint.screens
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -37,8 +38,12 @@ class FoodDetailsFragment : Fragment() {
         setupNavigation()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setFoodInfo(){
-
+        caloriesCount.text = (food.calories * (food.quantity/100)).toString()
+        carbohydratesCount.text = (food.carbohydrates * (food.quantity/100)).toString() + " g"
+        proteinsCount.text = (food.proteins * (food.quantity/100)).toString()+ " g"
+        fatCount.text = (food.fats * (food.quantity/100)).toString()+ " g"
     }
 
     private fun setupNavigation(){

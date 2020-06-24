@@ -61,7 +61,7 @@
             android:textColor="@color/darkGray"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+            app:layout_constraintTop_toBottomOf="@+id/fatCount" />
 
         <TextView
             android:id="@+id/textView22"
@@ -150,7 +150,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/caloriesCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -162,7 +162,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView11" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/carbohydratesCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
@@ -174,7 +174,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView15" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/proteinsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
@@ -186,7 +186,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView16" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/fatCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
@@ -273,8 +273,8 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/little_rounded_bg"
             android:backgroundTint="#8BC34A"
-            app:layout_constraintStart_toStartOf="@+id/textView13"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintStart_toStartOf="@+id/caloriesCount"
+            app:layout_constraintTop_toBottomOf="@+id/caloriesCount" />
 
         <View
             android:id="@+id/view2"
@@ -284,7 +284,7 @@
             android:background="@drawable/little_rounded_bg"
             android:backgroundTint="#C5DB00"
             app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+            app:layout_constraintTop_toBottomOf="@+id/carbohydratesCount" />
 
         <View
             android:id="@+id/view3"
@@ -294,7 +294,7 @@
             android:background="@drawable/little_rounded_bg"
             android:backgroundTint="#BF0000"
             app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+            app:layout_constraintTop_toBottomOf="@+id/proteinsCount" />
 
         <TextView
             android:id="@+id/backToHomeButton"

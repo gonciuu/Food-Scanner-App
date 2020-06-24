@@ -117,6 +117,7 @@ class ScanFragment : Fragment() {
                 requireActivity().runOnUiThread {
                     foodInfoViewModel.setFood(SimplyfiFood(
                         food.product.productName,
+                        food.product.productQuantity,
                         food.product.nutriments.energyKcal,
                         food.product.nutriments.carbohydrates,
                         food.product.nutriments.proteins,
