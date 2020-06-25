@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_food_details.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 
 class FoodDetailsFragment : Fragment() {
@@ -42,9 +43,42 @@ class FoodDetailsFragment : Fragment() {
             food = t
             setFoodInfo()
         })
-
         setupNavigation()
     }
+
+
+    private fun setVeganAndVegetarianState(){
+        var superfoodCharset = "${food.name} is for vegan and for vegetarian"
+
+        for (ingredient in food.ingredients) {
+            if(ingredient.vegan != "yes"){
+                superfoodCharset.replace("for vegan","not for vegan")
+                break
+            }
+        }
+
+        for (ingredient in food.ingredients) {
+            if(ingredient.vegetarian != "yes"){
+                superfoodCharset.replace("for vegetarian","not for vegetarian")
+                break
+            }
+        }
+
+        when(Random.nextInt(0,2)){
+            0-> superfoodCharset += if(food.fats * (food.quantity/100) > 30) ". Has a lot of fats too!"
+            else ". Has no many fats too!"
+
+            1-> superfoodCharset += if(food.carbohydrates * (food.quantity/100) > 100) ". Has a lot of carbohydrates too!"
+            else ". Has no many carbohydrates too!"
+
+            2-> superfoodCharset += if(food.proteins * (food.quantity/100) > 30) ". Has a lot of proteins too!"
+            else ". Has no many proteins too!"
+        }
+
+
+        vaganAndVegetarianState.text = superfoodCharset
+    }
+
 
     @SuppressLint("SetTextI18n")
     private fun setFoodInfo(){
@@ -54,18 +88,15 @@ class FoodDetailsFragment : Fragment() {
         fatCount.text = (food.fats * (food.quantity/100)).toString()+ " g"
         foodName.text = food.name
         setFoodCategories()
+        setVeganAndVegetarianState()
         setImage()
     }
 
     @SuppressLint("SetTextI18n")
     private fun setFoodCategories() {
         food.categories.forEach {
-            foodCategories.text  = foodCategories.text.toString() + removeLanguageTags(it) + ", "
+            foodCategories.text  = foodCategories.text.toString() + it.removeRange(0,it.indexOf(":")+1) + ", "
         }
-    }
-
-    private fun removeLanguageTags(str:String) : String{
-        return str.removeRange(0,str.indexOf(":")+1)
     }
 
 
