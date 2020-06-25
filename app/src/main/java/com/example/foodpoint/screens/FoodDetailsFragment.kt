@@ -47,6 +47,20 @@ class FoodDetailsFragment : Fragment() {
     }
 
 
+
+
+    @SuppressLint("SetTextI18n")
+    private fun setFoodInfo(){
+        caloriesCount.text = (food.calories * (food.quantity/100)).toString()
+        carbohydratesCount.text = (food.carbohydrates * (food.quantity/100)).toString() + " g"
+        proteinsCount.text = (food.proteins * (food.quantity/100)).toString()+ " g"
+        fatCount.text = (food.fats * (food.quantity/100)).toString()+ " g"
+        foodName.text = food.name
+        setFoodCategories()
+        setVeganAndVegetarianState()
+        setImage()
+        setAllergens()
+    }
     private fun setVeganAndVegetarianState(){
         var superfoodCharset = "${food.name} is for vegan and for vegetarian"
 
@@ -81,16 +95,32 @@ class FoodDetailsFragment : Fragment() {
 
 
     @SuppressLint("SetTextI18n")
-    private fun setFoodInfo(){
-        caloriesCount.text = (food.calories * (food.quantity/100)).toString()
-        carbohydratesCount.text = (food.carbohydrates * (food.quantity/100)).toString() + " g"
-        proteinsCount.text = (food.proteins * (food.quantity/100)).toString()+ " g"
-        fatCount.text = (food.fats * (food.quantity/100)).toString()+ " g"
-        foodName.text = food.name
-        setFoodCategories()
-        setVeganAndVegetarianState()
-        setImage()
+    private fun setAllergens(){
+        if(food.allergens.isNotEmpty()){
+            foodAllergensNutrinions.text = ""
+            foodNotAllergensNutrinions.text = ""
+
+            //---------ALLERGENS-------------
+            food.allergens.forEach {
+                foodAllergensNutrinions.text = foodAllergensNutrinions.text.toString() + it.removeRange(0,it.indexOf(":")+1) +", "
+            }
+            //-------------------------------
+            //--------NOT ALLERGENS----------
+
+            for (ingredient in food.ingredients) {
+                for(i in food.allergens){
+                    if(i != ingredient.text){
+                        foodNotAllergensNutrinions.text = foodNotAllergensNutrinions.text.toString() + ingredient.text.removeRange(0,ingredient.text.indexOf(":")+1).replace("_","") +", "
+                        break
+                    }
+                }
+            }
+
+        }
     }
+
+
+
 
     @SuppressLint("SetTextI18n")
     private fun setFoodCategories() {
