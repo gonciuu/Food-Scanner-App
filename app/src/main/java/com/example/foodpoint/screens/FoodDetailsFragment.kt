@@ -49,6 +49,8 @@ class FoodDetailsFragment : Fragment() {
 
 
 
+    //---------------FUNCTION WITCH SET FOOD DATA IN UI/UX--------------------
+
     @SuppressLint("SetTextI18n")
     private fun setFoodInfo(){
         caloriesCount.text = (food.calories * (food.quantity/100)).toString()
@@ -61,6 +63,11 @@ class FoodDetailsFragment : Fragment() {
         setImage()
         setAllergens()
     }
+
+    //========================================================================
+
+
+    //---------------------------FUNCTION SETS THE VEGAN AND VEGETARIAN STATE IN TEXTVIEW AND RANDOM INFO ABOUT FOOD HEALTHY-----------------------
     private fun setVeganAndVegetarianState(){
         var superfoodCharset = "${food.name} is for vegan and for vegetarian"
 
@@ -88,9 +95,14 @@ class FoodDetailsFragment : Fragment() {
             2-> superfoodCharset += if(food.proteins * (food.quantity/100) > 30) ". Has a lot of proteins too!"
             else ". Has no many proteins too!"
         }
-        
+
         vaganAndVegetarianState.text = superfoodCharset
     }
+
+    //===============================================================================================================================================
+
+
+    //-------------------SET ALLERGENS AND NOT ALLERGENS INGREDIENDS------------------------
 
 
     @SuppressLint("SetTextI18n")
@@ -117,16 +129,21 @@ class FoodDetailsFragment : Fragment() {
             }
         }
 
+    //=======================================================================================
 
 
+
+    //-------------------SETS FOOD CATEGORIES UNDER FOOD NAME-------------------
     @SuppressLint("SetTextI18n")
     private fun setFoodCategories() {
         food.categories.forEach {
             foodCategories.text  = foodCategories.text.toString() + it.removeRange(0,it.indexOf(":")+1) + ", "
         }
     }
+    //==========================================================================
 
 
+    //--------------------SET FOOD IMAGE IN SQUARE AND IF IMAGE WIDTH > HEIGHT THEN ROTATE IT ON 90 DEEGRESS----------------
     private fun setImage(){
         CoroutineScope(Dispatchers.IO).launch{
             var image = Picasso.get().load(food.imageUrl).get()
@@ -141,7 +158,9 @@ class FoodDetailsFragment : Fragment() {
         }
 
     }
+    //=====================================================================================================================
 
+    //-------------SETUP NAVIGATION (BUTTONS CLICKS ETC)-----------------
     private fun setupNavigation(){
         backToHomeButton.setOnClickListener {
             findNavController().navigate(R.id.action_foodDetailsFragment_to_homeFragment)
@@ -150,4 +169,5 @@ class FoodDetailsFragment : Fragment() {
             findNavController().navigate(R.id.action_foodDetailsFragment_to_scanFragment)
         }
     }
+    //===================================================================
 }
