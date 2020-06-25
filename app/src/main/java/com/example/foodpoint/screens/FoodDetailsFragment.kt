@@ -88,25 +88,19 @@ class FoodDetailsFragment : Fragment() {
             2-> superfoodCharset += if(food.proteins * (food.quantity/100) > 30) ". Has a lot of proteins too!"
             else ". Has no many proteins too!"
         }
-
-
+        
         vaganAndVegetarianState.text = superfoodCharset
     }
 
 
     @SuppressLint("SetTextI18n")
     private fun setAllergens(){
+        foodAllergensNutrinions.text = ""
+        foodNotAllergensNutrinions.text = ""
         if(food.allergens.isNotEmpty()){
-            foodAllergensNutrinions.text = ""
-            foodNotAllergensNutrinions.text = ""
-
-            //---------ALLERGENS-------------
             food.allergens.forEach {
                 foodAllergensNutrinions.text = foodAllergensNutrinions.text.toString() + it.removeRange(0,it.indexOf(":")+1) +", "
-            }
-            //-------------------------------
-            //--------NOT ALLERGENS----------
-
+           }
             for (ingredient in food.ingredients) {
                 for(i in food.allergens){
                     if(i != ingredient.text){
@@ -115,10 +109,13 @@ class FoodDetailsFragment : Fragment() {
                     }
                 }
             }
-
+        }else{
+            foodAllergensNutrinions.text = "No any allergens ingredients"
+            for (ingredient in food.ingredients) {
+                    foodNotAllergensNutrinions.text = foodNotAllergensNutrinions.text.toString() + ingredient.text.removeRange(0,ingredient.text.indexOf(":")+1).replace("_","") +", "
+                }
+            }
         }
-    }
-
 
 
 
