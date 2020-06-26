@@ -5,14 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodpoint.R
+import com.example.foodpoint.api.food_class.food_class_to_communicate_wwith_others.SimplyfiFood
 
-class HistoryRecyclerViewAdapter():RecyclerView.Adapter<HistoryViewHolder>(){
+class HistoryRecyclerViewAdapter(private val listOfFoodHistory : ArrayList<SimplyfiFood>):RecyclerView.Adapter<HistoryViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
        return HistoryViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.history_card,parent,false))
     }
 
     override fun getItemCount(): Int {
-        return 20
+        return listOfFoodHistory.size
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
