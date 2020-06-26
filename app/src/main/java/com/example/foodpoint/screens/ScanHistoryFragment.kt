@@ -25,7 +25,9 @@ class ScanHistoryFragment : Fragment() {
     }
 
     private lateinit var listOfSearchHistory : ArrayList<SimplyfiFood>
-
+    private lateinit var historyViewModel : HistoryViewModel
+    private lateinit var observer:Observer<List<SimplyfiFood>>
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -36,16 +38,18 @@ class ScanHistoryFragment : Fragment() {
     }
 
     private fun getAllHistory(){
-        val  historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(HistoryViewModel::class.java)
-        historyViewModel.allHistory.observe(viewLifecycleOwner, Observer {
+        observer =  Observer<List<SimplyfiFood>> {
                 t->
             listOfSearchHistory = t as ArrayList<SimplyfiFood>
             historyRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = HistoryRecyclerViewAdapter(listOfSearchHistory)
+                adapter = HistoryRecyclerViewAdapter(listOfSearchHistory,historyViewModel)
                 setHistoryTimeButtons()
             }
-        })
+            historyViewModel.allHistory.removeObserver(observer)
+        }
+        historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(HistoryViewModel::class.java)
+        historyViewModel.allHistory.observe(viewLifecycleOwner,observer)
     }
 
     private fun setHistoryTimeButtons(){
@@ -58,12 +62,12 @@ class ScanHistoryFragment : Fragment() {
                     listOfTodaySearch.add(it)
                 }
             }
-            historyRecyclerView.adapter = HistoryRecyclerViewAdapter(listOfTodaySearch)
+            historyRecyclerView.adapter = HistoryRecyclerViewAdapter(listOfTodaySearch,historyViewModel)
         }
 
         allButton.setOnClickListener {
             setColors("#FE7D55","#E4E4E4","#ffffff","#313131")
-            historyRecyclerView.adapter = HistoryRecyclerViewAdapter(listOfSearchHistory)
+            historyRecyclerView.adapter = HistoryRecyclerViewAdapter(listOfSearchHistory,historyViewModel)
         }
     }
 
