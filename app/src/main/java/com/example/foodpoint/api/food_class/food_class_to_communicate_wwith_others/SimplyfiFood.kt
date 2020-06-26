@@ -16,7 +16,8 @@ data class SimplyfiFood(
     val fats: Double,
     val ingredients: ArrayList<Ingredient>,
     val categories : ArrayList<String>,
-    val allergens : ArrayList<String>
+    val allergens : ArrayList<String>,
+    val searchDate:Long
 ){
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

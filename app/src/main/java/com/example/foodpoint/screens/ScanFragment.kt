@@ -128,7 +128,8 @@ class ScanFragment : Fragment() {
                         food.product.nutriments.fat,
                         food.product.ingredients as ArrayList<Ingredient>,
                         food.product.categoriesTags as ArrayList<String>,
-                        listOfAllergens)
+                        listOfAllergens,
+                        System.currentTimeMillis())
                     foodInfoViewModel.setFood(simpleFood)
                     historyViewModel.insertHistory(simpleFood)
                     handler.postDelayed({findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment)},3000)
