@@ -17,6 +17,7 @@ import com.example.foodpoint.api.food_class.Ingredient
 import com.example.foodpoint.api.food_class.food_class_to_communicate_wwith_others.SimplyfiFood
 import com.example.foodpoint.api.service.FoodService
 import com.example.foodpoint.api.service.RetrofitClient
+import com.example.foodpoint.history_database.HistoryViewModel
 import com.example.foodpoint.screens.view_models.FoodInfoViewModel
 import com.example.foodpoint.screens.view_models.ScanViewModel
 import kotlinx.android.synthetic.main.fragment_scan.*
@@ -32,7 +33,7 @@ class ScanFragment : Fragment() {
     private lateinit var foodInfoViewModel: FoodInfoViewModel
     private lateinit var food: Food
     private var handler:Handler = Handler()
-
+    private lateinit var historyViewModel : HistoryViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_scan, container, false)
@@ -42,7 +43,7 @@ class ScanFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         scanViewModel = ViewModelProvider(requireActivity()).get(ScanViewModel::class.java)
         foodInfoViewModel = ViewModelProvider(requireActivity()).get(FoodInfoViewModel::class.java)
-
+        historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(HistoryViewModel::class.java)
         getBarCode()
         setupFragment()
     }
@@ -116,7 +117,7 @@ class ScanFragment : Fragment() {
                 requireActivity().runOnUiThread {
                     var listOfAllergens = arrayListOf<String>()
                     if(food.product.allergensTags.isNotEmpty()) listOfAllergens = food.product.allergensTags.toList() as ArrayList<String>
-                    foodInfoViewModel.setFood(SimplyfiFood(
+                    val simpleFood = SimplyfiFood(
                         food.product.productName,
                         food.product.productQuantity,
                         food.product.imageFrontUrl,
@@ -126,7 +127,9 @@ class ScanFragment : Fragment() {
                         food.product.nutriments.fat,
                         food.product.ingredients as ArrayList<Ingredient>,
                         food.product.categoriesTags as ArrayList<String>,
-                        listOfAllergens))
+                        listOfAllergens)
+                    foodInfoViewModel.setFood(simpleFood)
+                    historyViewModel.insertHistory(simpleFood)
                     handler.postDelayed({findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment)},3000)
                 }
             }
