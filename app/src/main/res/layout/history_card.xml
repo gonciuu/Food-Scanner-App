@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/historyCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:background="@drawable/little_rounded_bg"
-    android:backgroundTint="#E4E4E4"
-    android:padding="20dp"
-    android:layout_marginRight="20dp"
     android:layout_marginLeft="20dp"
     android:layout_marginTop="11dp"
+    android:layout_marginRight="20dp"
     android:layout_marginBottom="11dp"
-    android:orientation="horizontal">
+    android:background="@drawable/little_rounded_bg"
+    android:backgroundTint="#E4E4E4"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="20dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="50dp"
@@ -29,8 +30,8 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_marginStart="15dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -38,23 +39,23 @@
             android:id="@+id/historyFoodName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"
             android:ellipsize="end"
             android:fontFamily="@font/segoeuib"
+            android:maxLines="1"
+            android:text="Rice noodles"
             android:textColor="@color/darkGray"
-            android:textSize="15sp"
-            android:text="Rice noodles" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/historyFoodNumber"
             android:layout_width="match_parent"
-            android:maxLines="1"
-            android:ellipsize="end"
             android:layout_height="wrap_content"
-            android:textColor="@color/gray"
-            android:textSize="15sp"
+            android:ellipsize="end"
             android:fontFamily="@font/segoeui"
-            android:text="634824724642" />
+            android:maxLines="1"
+            android:text="634824724642"
+            android:textColor="@color/gray"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -63,15 +64,15 @@
         android:id="@+id/historyDeleteIcon"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/ic_delete"
         android:layout_marginRight="15dp"
+        android:src="@drawable/ic_delete"
         android:tint="@color/darkGray" />
 
     <ImageView
         android:id="@+id/historyCheckIcon"
         android:layout_width="30dp"
-        android:layout_marginRight="20dp"
         android:layout_height="30dp"
+        android:layout_marginRight="20dp"
         android:src="@drawable/ic_get_link"
         android:tint="@color/darkGray" />
 </LinearLayout>

@@ -1,6 +1,8 @@
 package com.example.foodpoint.screens
 
+import android.graphics.Color
 import android.os.Bundle
+import android.text.format.DateUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,6 +24,8 @@ class ScanHistoryFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_scan_history, container, false)
     }
 
+    private lateinit var listOfSearchHistory : ArrayList<SimplyfiFood>
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -35,11 +39,39 @@ class ScanHistoryFragment : Fragment() {
         val  historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(HistoryViewModel::class.java)
         historyViewModel.allHistory.observe(viewLifecycleOwner, Observer {
                 t->
+            listOfSearchHistory = t as ArrayList<SimplyfiFood>
             historyRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = HistoryRecyclerViewAdapter(t as ArrayList<SimplyfiFood>)
+                adapter = HistoryRecyclerViewAdapter(listOfSearchHistory)
+                setHistoryTimeButtons()
             }
         })
     }
 
+    private fun setHistoryTimeButtons(){
+
+        todayButton.setOnClickListener {
+            setColors("#E4E4E4","#FE7D55","#313131","#ffffff")
+            val listOfTodaySearch = arrayListOf<SimplyfiFood>()
+            listOfSearchHistory.forEach {
+                if(DateUtils.isToday(it.searchDate)){
+                    listOfTodaySearch.add(it)
+                }
+            }
+            historyRecyclerView.adapter = HistoryRecyclerViewAdapter(listOfTodaySearch)
+        }
+
+        allButton.setOnClickListener {
+            setColors("#FE7D55","#E4E4E4","#ffffff","#313131")
+            historyRecyclerView.adapter = HistoryRecyclerViewAdapter(listOfSearchHistory)
+        }
+    }
+
+
+    private fun setColors(allButtonTint:String,todayButtonTint:String, allButtonTextColor:String,todayButtonTextColor:String){
+        allButton.background.setTint(Color.parseColor(allButtonTint))
+        todayButton.background.setTint(Color.parseColor(todayButtonTint))
+        todayButton.setTextColor(Color.parseColor(todayButtonTextColor))
+        allButton.setTextColor(Color.parseColor(allButtonTextColor))
+    }
 }
