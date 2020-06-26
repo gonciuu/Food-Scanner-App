@@ -118,6 +118,7 @@ class ScanFragment : Fragment() {
                     var listOfAllergens = arrayListOf<String>()
                     if(food.product.allergensTags.isNotEmpty()) listOfAllergens = food.product.allergensTags.toList() as ArrayList<String>
                     val simpleFood = SimplyfiFood(
+                        food.product.id,
                         food.product.productName,
                         food.product.productQuantity,
                         food.product.imageFrontUrl,

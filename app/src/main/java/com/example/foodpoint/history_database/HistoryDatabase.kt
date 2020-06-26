@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.foodpoint.api.food_class.food_class_to_communicate_wwith_others.SimplyfiFood
 
-@Database(entities = [SimplyfiFood::class], version = 1)
+@Database(entities = [SimplyfiFood::class], version = 2)
 @TypeConverters(StringArrayListConverter::class,IngredientsArrayListConverter::class)
 abstract class HistoryDatabase : RoomDatabase() {
 

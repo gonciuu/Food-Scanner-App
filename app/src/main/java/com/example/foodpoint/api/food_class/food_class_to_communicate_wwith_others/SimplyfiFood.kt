@@ -6,6 +6,7 @@ import com.example.foodpoint.api.food_class.Ingredient
 
 @Entity(tableName = "history_database")
 data class SimplyfiFood(
+    val urlId:String,
     val name: String,
     val quantity:Int,
     val imageUrl:String,

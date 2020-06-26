@@ -22,6 +22,7 @@ class HistoryRecyclerViewAdapter(private val listOfFoodHistory : ArrayList<Simpl
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         holder.foodName.text = listOfFoodHistory[holder.adapterPosition].name
         Picasso.get().load(listOfFoodHistory[holder.adapterPosition].imageUrl).into(holder.foodImage)
+        holder.foodBarcodeNumber.text = listOfFoodHistory[holder.adapterPosition].urlId
     }
 
 
