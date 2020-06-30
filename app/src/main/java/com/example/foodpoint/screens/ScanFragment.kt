@@ -124,9 +124,8 @@ class ScanFragment : Fragment() {
                     food = RetrofitClient.instance.getFoodAsync(foodBarcodeNumber).await().body()!!
                     if (food.status == 1) {
                         requireActivity().runOnUiThread {
-                            var listOfAllergens = arrayListOf<String>()
-                            if (food.product.allergensTags.isNotEmpty()) listOfAllergens =
-                                food.product.allergensTags.toList() as ArrayList<String>
+                            var listOfAllergens = ArrayList<String>()
+                            if (food.product.allergensTags.isNotEmpty()) listOfAllergens = food.product.allergensTags as ArrayList<String>
                             val simpleFood = SimplyfiFood(
                                 food.product.id,
                                 food.product.productName,

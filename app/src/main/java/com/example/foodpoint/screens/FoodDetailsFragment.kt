@@ -54,10 +54,10 @@ class FoodDetailsFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun setFoodInfo(){
-        caloriesCount.text = (food.calories * (food.quantity/100)).toString()
-        carbohydratesCount.text = (food.carbohydrates * (food.quantity/100)).toString() + " g"
-        proteinsCount.text = (food.proteins * (food.quantity/100)).toString()+ " g"
-        fatCount.text = (food.fats * (food.quantity/100)).toString()+ " g"
+        caloriesCount.text = (food.calories * (food.quantity.toDouble()/100)).toString()
+        carbohydratesCount.text = String.format("%.2f",(food.carbohydrates * (food.quantity.toDouble()/100))) + " g"
+        proteinsCount.text = String.format("%.2f",(food.proteins * (food.quantity.toDouble()/100)))+ " g"
+        fatCount.text = String.format("%.2f",(food.fats * (food.quantity.toDouble()/100)))+ " g"
         foodName.text = food.name
         setFoodCategories()
         setVeganAndVegetarianState()
