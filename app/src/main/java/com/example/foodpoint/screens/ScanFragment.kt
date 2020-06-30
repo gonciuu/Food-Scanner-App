@@ -149,21 +149,11 @@ class ScanFragment : Fragment() {
                             )
                         }
                     } else {
-                        handler.postDelayed({
-                            DialogAlert(
-                                "Error",
-                                "Cannot find product in database"
-                            ).show(requireActivity().supportFragmentManager, "error")
-                        }, 3000)
+                        showDialog("Error","Cannot find product in database")           //not in database
                     }
                 }
             } else {
-                handler.postDelayed({
-                    DialogAlert(
-                        "Error",
-                        "Barcode number must not be null"
-                    ).show(requireActivity().supportFragmentManager, "error")
-                }, 3000)
+                showDialog("Error","Barcode number must not be null")                   //null barcode exception
             }
         } catch (ex: Exception) {
         }
@@ -175,5 +165,14 @@ class ScanFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         handler.removeCallbacksAndMessages(null) //REMOVE ALL CALLBACKS FROM HANDLER
+    }
+
+    private fun showDialog(title:String,message:String){
+        handler.postDelayed({
+            DialogAlert(
+                title,
+                message
+            ).show(requireActivity().supportFragmentManager, "error")
+        }, 3000)
     }
 }
