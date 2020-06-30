@@ -17,6 +17,7 @@ import com.example.foodpoint.api.food_class.Ingredient
 import com.example.foodpoint.api.food_class.food_class_to_communicate_wwith_others.SimplyfiFood
 import com.example.foodpoint.api.service.FoodService
 import com.example.foodpoint.api.service.RetrofitClient
+import com.example.foodpoint.dialogs.DialogAlert
 import com.example.foodpoint.history_database.HistoryViewModel
 import com.example.foodpoint.screens.view_models.FoodInfoViewModel
 import com.example.foodpoint.screens.view_models.ScanViewModel
@@ -32,10 +33,14 @@ class ScanFragment : Fragment() {
     private lateinit var scanViewModel: ScanViewModel
     private lateinit var foodInfoViewModel: FoodInfoViewModel
     private lateinit var food: Food
-    private var handler:Handler = Handler()
-    private lateinit var historyViewModel : HistoryViewModel
+    private var handler: Handler = Handler()
+    private lateinit var historyViewModel: HistoryViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_scan, container, false)
     }
 
@@ -43,7 +48,8 @@ class ScanFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         scanViewModel = ViewModelProvider(requireActivity()).get(ScanViewModel::class.java)
         foodInfoViewModel = ViewModelProvider(requireActivity()).get(FoodInfoViewModel::class.java)
-        historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(HistoryViewModel::class.java)
+        historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
+            .create(HistoryViewModel::class.java)
         getBarCode()
         setupFragment()
     }
@@ -91,7 +97,8 @@ class ScanFragment : Fragment() {
             handler.postDelayed({ setAnim(scanLabel, 2000, -200f) }, 750)
             handler.postDelayed({ setAnim(scanLabel, 2000, 200f) }, 1750)
             handler.postDelayed({ setAnim(scanLabel, 2000, -200f) }, 2750)
-        } catch (ex: Exception) { }
+        } catch (ex: Exception) {
+        }
     }
 
     //==================================================================================================================
@@ -110,36 +117,59 @@ class ScanFragment : Fragment() {
 
     //----------GET FOOD INFO FROM JSON FUNCTION AND GO TO NEXT SCREEN WHEN THE INFO WAS GOT----------------
 
-    private fun getFoodInfo(foodBarcodeNumber:String) {
+    private fun getFoodInfo(foodBarcodeNumber: String) {
         try {
-            CoroutineScope(Dispatchers.IO).launch {
-                food = RetrofitClient.instance.getFoodAsync(foodBarcodeNumber).await().body()!!
-                requireActivity().runOnUiThread {
-                    var listOfAllergens = arrayListOf<String>()
-                    if(food.product.allergensTags.isNotEmpty()) listOfAllergens = food.product.allergensTags.toList() as ArrayList<String>
-                    val simpleFood = SimplyfiFood(
-                        food.product.id,
-                        food.product.productName,
-                        food.product.productQuantity,
-                        food.product.imageFrontUrl,
-                        food.product.nutriments.energyKcal,
-                        food.product.nutriments.carbohydrates,
-                        food.product.nutriments.proteins,
-                        food.product.nutriments.fat,
-                        food.product.ingredients as ArrayList<Ingredient>,
-                        food.product.categoriesTags as ArrayList<String>,
-                        listOfAllergens,
-                        System.currentTimeMillis())
-                    foodInfoViewModel.setFood(simpleFood)
-                    historyViewModel.insertHistory(simpleFood)
-                    handler.postDelayed({findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment)},3000)
+            if (!foodBarcodeNumber.isNullOrEmpty()) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    food = RetrofitClient.instance.getFoodAsync(foodBarcodeNumber).await().body()!!
+                    if (food.status == 1) {
+                        requireActivity().runOnUiThread {
+                            var listOfAllergens = arrayListOf<String>()
+                            if (food.product.allergensTags.isNotEmpty()) listOfAllergens =
+                                food.product.allergensTags.toList() as ArrayList<String>
+                            val simpleFood = SimplyfiFood(
+                                food.product.id,
+                                food.product.productName,
+                                food.product.productQuantity,
+                                food.product.imageFrontUrl,
+                                food.product.nutriments.energyKcal,
+                                food.product.nutriments.carbohydrates,
+                                food.product.nutriments.proteins,
+                                food.product.nutriments.fat,
+                                food.product.ingredients as ArrayList<Ingredient>,
+                                food.product.categoriesTags as ArrayList<String>,
+                                listOfAllergens,
+                                System.currentTimeMillis()
+                            )
+                            foodInfoViewModel.setFood(simpleFood)
+                            historyViewModel.insertHistory(simpleFood)
+                            handler.postDelayed(
+                                { findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment) },
+                                3000
+                            )
+                        }
+                    } else {
+                        handler.postDelayed({
+                            DialogAlert(
+                                "Error",
+                                "Cannot find product in database"
+                            ).show(requireActivity().supportFragmentManager, "error")
+                        }, 3000)
+                    }
                 }
+            } else {
+                handler.postDelayed({
+                    DialogAlert(
+                        "Error",
+                        "Barcode number must not be null"
+                    ).show(requireActivity().supportFragmentManager, "error")
+                }, 3000)
             }
-        }catch (ex:Exception){ }
+        } catch (ex: Exception) {
+        }
     }
 
     //=======================================================================================================
-
 
 
     override fun onPause() {
