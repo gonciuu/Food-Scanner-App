@@ -26,6 +26,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.net.SocketTimeoutException
 
 
 class ScanFragment : Fragment() {
@@ -118,44 +119,53 @@ class ScanFragment : Fragment() {
     //----------GET FOOD INFO FROM JSON FUNCTION AND GO TO NEXT SCREEN WHEN THE INFO WAS GOT----------------
 
     private fun getFoodInfo(foodBarcodeNumber: String) {
-        try {
+
             if (!foodBarcodeNumber.isNullOrEmpty()) {
                 CoroutineScope(Dispatchers.IO).launch {
-                    food = RetrofitClient.instance.getFoodAsync(foodBarcodeNumber).await().body()!!
-                    if (food.status == 1) {
-                        requireActivity().runOnUiThread {
-                            var listOfAllergens = ArrayList<String>()
-                            if (food.product.allergensTags.isNotEmpty()) listOfAllergens = food.product.allergensTags as ArrayList<String>
-                            val simpleFood = SimplyfiFood(
-                                food.product.id,
-                                food.product.productName,
-                                food.product.productQuantity,
-                                food.product.imageFrontUrl,
-                                food.product.nutriments.energyKcal,
-                                food.product.nutriments.carbohydrates,
-                                food.product.nutriments.proteins,
-                                food.product.nutriments.fat,
-                                food.product.ingredients as ArrayList<Ingredient>,
-                                food.product.categoriesTags as ArrayList<String>,
-                                listOfAllergens,
-                                System.currentTimeMillis()
-                            )
-                            foodInfoViewModel.setFood(simpleFood)
-                            historyViewModel.insertHistory(simpleFood)
-                            handler.postDelayed(
-                                { findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment) },
-                                3000
-                            )
+                    try {
+                        food =
+                            RetrofitClient.instance.getFoodAsync(foodBarcodeNumber).await().body()!!
+                        if (food.status == 1) {
+                            requireActivity().runOnUiThread {
+                                var listOfAllergens = ArrayList<String>()
+                                if (food.product.allergensTags.isNotEmpty()) listOfAllergens =
+                                    food.product.allergensTags as ArrayList<String>
+                                val simpleFood = SimplyfiFood(
+                                    food.product.id,
+                                    food.product.productName,
+                                    food.product.productQuantity,
+                                    food.product.imageFrontUrl,
+                                    food.product.nutriments.energyKcal,
+                                    food.product.nutriments.carbohydrates,
+                                    food.product.nutriments.proteins,
+                                    food.product.nutriments.fat,
+                                    food.product.ingredients as ArrayList<Ingredient>,
+                                    food.product.categoriesTags as ArrayList<String>,
+                                    listOfAllergens,
+                                    System.currentTimeMillis()
+                                )
+                                foodInfoViewModel.setFood(simpleFood)
+                                historyViewModel.insertHistory(simpleFood)
+                                handler.postDelayed(
+                                    { findNavController().navigate(R.id.action_scanFragment_to_foodDetailsFragment) },
+                                    3000
+                                )
+                            }
+                        } else {
+                            showDialog(
+                                "Error",
+                                "Cannot find product in database"
+                            )           //not in database
                         }
-                    } else {
-                        showDialog("Error","Cannot find product in database")           //not in database
+                    }catch (socketEx: SocketTimeoutException){
+                        showDialog("Error","Check your internet connection")
+                    }catch (ex:java.lang.Exception){
+                        showDialog("Error","Check your internet connection. Error ${ex.message}")
                     }
                 }
             } else {
                 showDialog("Error","Barcode number must not be null")                   //null barcode exception
             }
-        } catch (ex: Exception) {
-        }
     }
 
     //=======================================================================================================
