@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setRecyclerViewAdapter()
+
         setBottomBarButtonsClick()
         getListOfFood()
     }
@@ -65,13 +65,6 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_scanHistoryFragment)
         }
 
-    }
-
-    private fun setRecyclerViewAdapter() {
-        popularFoodsRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = PopularFoodAdapter()
-        }
     }
 
     private fun getListOfFood() {
@@ -142,7 +135,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun setTopPopularFoodsAdapter(listOfFoods: ArrayList<SimplyfiFood>){
-        popularFoodsRecyclerView.adapter = PopularFoodAdapter(listOfFoods)
+        popularFoodsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = PopularFoodAdapter(listOfFoods,requireActivity())
+        }
     }
 
     private fun setImage(url:String){

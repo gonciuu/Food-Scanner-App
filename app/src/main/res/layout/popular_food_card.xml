@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_marginTop="10dp"
-    android:background="@color/white"
     android:layout_marginBottom="10dp"
     android:layout_marginEnd="7dp"
     android:layout_marginStart="12dp"
@@ -15,6 +14,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         app:cardCornerRadius="10dp"
+        android:background="@color/white"
         android:elevation="0dp"
         android:layout_height="match_parent">
 
@@ -25,6 +25,7 @@
             android:padding="15dp">
 
             <ImageView
+                android:id="@+id/popularFoodImage"
                 android:layout_width="70dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
@@ -32,6 +33,7 @@
 
 
             <TextView
+                android:id="@+id/popularFoodName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -44,17 +46,18 @@
                 android:textSize="17sp" />
 
             <TextView
+                android:id="@+id/popularFoodIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:fontFamily="@font/segoeuisb"
                 android:maxLines="2"
-                android:text="Tomatoes, oregano, rice, honey, strawbbery jam"
                 android:textAlignment="center"
                 android:textColor="@color/darkGray"
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/popularCheckButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Check"
