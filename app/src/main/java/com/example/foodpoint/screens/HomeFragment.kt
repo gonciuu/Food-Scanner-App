@@ -1,5 +1,6 @@
 package com.example.foodpoint.screens
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.os.Bundle
@@ -127,8 +128,16 @@ class HomeFragment : Fragment() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun setRandomFoodInfoInUI(food: SimplyfiFood){
+        randomFoodIngredients.text =""
         setImage(food.imageUrl)
+        randomFoodName.text = food.name
+        randomFoodCalories.text = "Calories : ${(food.calories * (food.quantity.toDouble()/100)).toInt()}"
+        food.ingredients.forEach {
+            randomFoodIngredients.text = randomFoodIngredients.text.toString() + it.text.removePrefix("_").removeSuffix("_") + ", "
+        }
+        
     }
 
     private fun setImage(url:String){
