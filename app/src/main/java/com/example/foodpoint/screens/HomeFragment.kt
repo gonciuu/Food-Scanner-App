@@ -1,5 +1,7 @@
 package com.example.foodpoint.screens
 
+import android.graphics.Bitmap
+import android.graphics.Matrix
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,6 +17,8 @@ import com.example.foodpoint.api.food_class.food_class_to_communicate_wwith_othe
 import com.example.foodpoint.api.service.RetrofitClient
 import com.example.foodpoint.dialogs.DialogAlert
 import com.example.foodpoint.screens.adapters.recycler_views.PopularFoodAdapter
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_food_details.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -111,6 +115,7 @@ class HomeFragment : Fragment() {
             }
             requireActivity().runOnUiThread {
                 val randomFood = listOfFood[Random.nextInt(0,5)]
+                setRandomFoodInfoInUI(randomFood)
             }
 
         }
@@ -121,6 +126,25 @@ class HomeFragment : Fragment() {
             DialogAlert(title, message).show(requireActivity().supportFragmentManager, "error")
     }
 
+
+    private fun setRandomFoodInfoInUI(food: SimplyfiFood){
+        setImage(food.imageUrl)
+    }
+
+    private fun setImage(url:String){
+        CoroutineScope(Dispatchers.IO).launch{
+            var image = Picasso.get().load(url).get()
+            if(image.width > image.height){
+                val matrix : Matrix? = Matrix()
+                matrix?.postRotate(90f)
+                image = Bitmap.createBitmap(image,0,0,image.width,image.height,matrix,true)
+            }
+            requireActivity().runOnUiThread {
+                randomFoodImage.setImageBitmap(image)
+            }
+        }
+
+    }
 }
 
 
