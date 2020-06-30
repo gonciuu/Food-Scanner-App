@@ -123,27 +123,27 @@ class ScanFragment : Fragment() {
             if (!foodBarcodeNumber.isNullOrEmpty()) {
                 CoroutineScope(Dispatchers.IO).launch {
                     try {
-                        food =
-                            RetrofitClient.instance.getFoodAsync(foodBarcodeNumber).await().body()!!
-                        if (food.status == 1) {
-                            requireActivity().runOnUiThread {
-                                var listOfAllergens = ArrayList<String>()
-                                if (food.product.allergensTags.isNotEmpty()) listOfAllergens =
-                                    food.product.allergensTags as ArrayList<String>
-                                val simpleFood = SimplyfiFood(
-                                    food.product.id,
-                                    food.product.productName,
-                                    food.product.productQuantity,
-                                    food.product.imageFrontUrl,
-                                    food.product.nutriments.energyKcal,
-                                    food.product.nutriments.carbohydrates,
-                                    food.product.nutriments.proteins,
-                                    food.product.nutriments.fat,
-                                    food.product.ingredients as ArrayList<Ingredient>,
-                                    food.product.categoriesTags as ArrayList<String>,
-                                    listOfAllergens,
-                                    System.currentTimeMillis()
-                                )
+                                food =
+                                    RetrofitClient.instance.getFoodAsync(foodBarcodeNumber).await().body()!!
+                                if (food.status == 1) {
+                                    requireActivity().runOnUiThread {
+                                        var listOfAllergens = ArrayList<String>()
+                                        if (food.product.allergensTags.isNotEmpty()) listOfAllergens =
+                                            food.product.allergensTags as ArrayList<String>
+                                        val simpleFood = SimplyfiFood(
+                                            food.product.id,
+                                            food.product.productName,
+                                            food.product.productQuantity,
+                                            food.product.imageFrontUrl,
+                                            food.product.nutriments.energyKcal,
+                                            food.product.nutriments.carbohydrates,
+                                            food.product.nutriments.proteins,
+                                            food.product.nutriments.fat,
+                                            food.product.ingredients as ArrayList<Ingredient>,
+                                            food.product.categoriesTags as ArrayList<String>,
+                                            listOfAllergens,
+                                            System.currentTimeMillis()
+                                        )
                                 foodInfoViewModel.setFood(simpleFood)
                                 historyViewModel.insertHistory(simpleFood)
                                 handler.postDelayed(
