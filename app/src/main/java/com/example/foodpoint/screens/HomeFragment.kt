@@ -117,6 +117,8 @@ class HomeFragment : Fragment() {
             requireActivity().runOnUiThread {
                 val randomFood = listOfFood[Random.nextInt(0,5)]
                 setRandomFoodInfoInUI(randomFood)
+                listOfFood.remove(randomFood)
+                setTopPopularFoodsAdapter(listOfFood)
             }
 
         }
@@ -137,7 +139,10 @@ class HomeFragment : Fragment() {
         food.ingredients.forEach {
             randomFoodIngredients.text = randomFoodIngredients.text.toString() + it.text.removePrefix("_").removeSuffix("_") + ", "
         }
-        
+    }
+
+    private fun setTopPopularFoodsAdapter(listOfFoods: ArrayList<SimplyfiFood>){
+        popularFoodsRecyclerView.adapter = PopularFoodAdapter(listOfFoods)
     }
 
     private fun setImage(url:String){
