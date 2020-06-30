@@ -158,7 +158,7 @@ class ScanFragment : Fragment() {
                             )           //not in database
                         }
                     }catch (socketEx: SocketTimeoutException){
-                        showDialog("Error","Check your internet connection")
+                        showDialog("Error","Check your internet connection")        //no internet connection
                     }catch (ex:java.lang.Exception){
                         showDialog("Error","Check your internet connection. Error ${ex.message}")
                     }
