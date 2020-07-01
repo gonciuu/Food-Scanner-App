@@ -8,17 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodpoint.R
 import com.example.foodpoint.api.food_class.food_class_to_communicate_wwith_others.SimplyfiFood
+import com.example.foodpoint.screens.HomeFragment
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.popular_food_card.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class PopularFoodAdapter(private val listOfFood:ArrayList<SimplyfiFood>,private val activity:FragmentActivity):RecyclerView.Adapter<PopularFoodsViewHolder>(){
+class PopularFoodAdapter(private val listOfFood:ArrayList<SimplyfiFood>,val fr: HomeFragment):RecyclerView.Adapter<PopularFoodsViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularFoodsViewHolder {
         return PopularFoodsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.popular_food_card,parent,false))
     }
@@ -30,9 +32,15 @@ class PopularFoodAdapter(private val listOfFood:ArrayList<SimplyfiFood>,private 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PopularFoodsViewHolder, position: Int) {
         holder.foodName.text = listOfFood[holder.adapterPosition].name
-        setImage(listOfFood[holder.adapterPosition].imageUrl,holder.foodImage,activity)
+        setImage(listOfFood[holder.adapterPosition].imageUrl,holder.foodImage,fr.requireActivity())
         listOfFood[holder.adapterPosition].ingredients.forEach {
             holder.foodIngredients.text = holder.foodIngredients.text.toString() + it.text.removeSuffix("_").removePrefix("_") + ", "
+        }
+
+        holder.checkButton.setOnClickListener {
+            fr.foodInfoViewModel.setFood(listOfFood[holder.adapterPosition])
+            fr.historyViewModel.insertHistory(listOfFood[holder.adapterPosition])
+            fr.findNavController().navigate(R.id.action_homeFragment_to_foodDetailsFragment)
         }
     }
 

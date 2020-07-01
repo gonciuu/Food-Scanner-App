@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodpoint.R
@@ -17,7 +18,9 @@ import com.example.foodpoint.api.food_class.Ingredient
 import com.example.foodpoint.api.food_class.food_class_to_communicate_wwith_others.SimplyfiFood
 import com.example.foodpoint.api.service.RetrofitClient
 import com.example.foodpoint.dialogs.DialogAlert
+import com.example.foodpoint.history_database.HistoryViewModel
 import com.example.foodpoint.screens.adapters.recycler_views.PopularFoodAdapter
+import com.example.foodpoint.screens.view_models.FoodInfoViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_food_details.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -28,7 +31,8 @@ import java.net.SocketTimeoutException
 import kotlin.random.Random
 
 class HomeFragment : Fragment() {
-
+    lateinit var foodInfoViewModel: FoodInfoViewModel
+    lateinit var historyViewModel: HistoryViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,7 +43,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        foodInfoViewModel = ViewModelProvider(requireActivity()).get(FoodInfoViewModel::class.java)
+        historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
+            .create(HistoryViewModel::class.java)
         setBottomBarButtonsClick()
         getListOfFood()
     }
@@ -137,7 +143,7 @@ class HomeFragment : Fragment() {
     private fun setTopPopularFoodsAdapter(listOfFoods: ArrayList<SimplyfiFood>){
         popularFoodsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = PopularFoodAdapter(listOfFoods,requireActivity())
+            adapter = PopularFoodAdapter(listOfFoods,this@HomeFragment)
         }
     }
 
