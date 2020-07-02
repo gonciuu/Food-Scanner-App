@@ -138,6 +138,11 @@ class HomeFragment : Fragment() {
         food.ingredients.forEach {
             randomFoodIngredients.text = randomFoodIngredients.text.toString() + it.text.removePrefix("_").removeSuffix("_") + ", "
         }
+        randomFoodCheckButton.setOnClickListener {
+            foodInfoViewModel.setFood(food)
+            historyViewModel.insertHistory(food)
+            findNavController().navigate(R.id.action_homeFragment_to_foodDetailsFragment)
+        }
     }
 
     private fun setTopPopularFoodsAdapter(listOfFoods: ArrayList<SimplyfiFood>){
