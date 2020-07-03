@@ -26,13 +26,14 @@ class PopularFoodAdapter(private val listOfFood:ArrayList<SimplyfiFood>,private 
     }
 
     override fun getItemCount(): Int {
-        return if(listOfFood.isNotEmpty()) listOfFood.size
-        else 5
+        return if(listOfFood.isNotEmpty()) listOfFood.size  //API
+        else 5                                              //LOADING
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PopularFoodsViewHolder, position: Int) {
 
+        //--------------------SET FOOD INFO IN CARD UI---------------------
         if(listOfFood.isNotEmpty()) {
             holder.foodIngredients.text = ""
             holder.foodName.text = listOfFood[holder.adapterPosition].name
@@ -64,6 +65,7 @@ class PopularFoodsViewHolder(view :View) :RecyclerView.ViewHolder(view){
     val checkButton = view.popularCheckButton!!
 }
 
+//-------------------------SET IMAGE AND IF THE WIDTH > HEIGHT ROTATE THIS PHOTO------------------------------
 private fun setImage(url:String,imageView:ImageView,activity: FragmentActivity){
     CoroutineScope(Dispatchers.IO).launch{
         var image = Picasso.get().load(url).get()
@@ -77,3 +79,5 @@ private fun setImage(url:String,imageView:ImageView,activity: FragmentActivity){
         }
     }
 }
+
+//=============================================================================================================

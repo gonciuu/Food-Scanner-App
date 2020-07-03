@@ -50,12 +50,17 @@ class HomeFragment : Fragment() {
         getListOfFood()
     }
 
+    //--------------------SET ADAPTER TO RECYCLER VIEW AS "LOADING"-----------------------
     private fun setLoadingAdapter(){
         popularFoodsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = PopularFoodAdapter(arrayListOf(),this@HomeFragment)
         }
     }
+    //====================================================================================
+
+
+    //----------------------SET ON CLICK ON BUTTONS IN BOTTOM BAR AND THE FLOATING ACTION BUTTON----------------------
 
     private fun setBottomBarButtonsClick() {
 
@@ -78,7 +83,10 @@ class HomeFragment : Fragment() {
         }
 
     }
+    //==================================================================================================================
 
+
+    //---------------------GET LIST OF SILMPLIFY FOOD FROM API FROM FOOD BARCODE IN LIST-------------------------
     private fun getListOfFood() {
 
         val foodsIdList = arrayListOf<String>("5906040063577", "4014400900576", "7613034944849", "5900084231145", "20142322", "5900512320359")
@@ -130,11 +138,17 @@ class HomeFragment : Fragment() {
 
     }
 
+    //====================================================================================================================
+
+    //--------------FUNCTION WHITCH SHOW CUSTOM ALERT DIALOG-------------------
     private fun showDialog(title:String,message:String){
             DialogAlert(title, message).show(requireActivity().supportFragmentManager, "error")
     }
+    //=========================================================================
 
 
+
+    //-------------------------SETTING THE INFO ABOUT RANDOM FOOD IN UI IN HOME FRAGMENT-----------------------------
     @SuppressLint("SetTextI18n")
     private fun setRandomFoodInfoInUI(food: SimplyfiFood){
         randomFoodIngredients.text =""
@@ -156,13 +170,20 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_foodDetailsFragment)
         }
     }
+    //=================================================================================================================
 
+
+    //------------------SET FOOD ADPATER AFTER GET FOOD INFO FROM API-----------------------
     private fun setTopPopularFoodsAdapter(listOfFoods: ArrayList<SimplyfiFood>){
         popularFoodsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = PopularFoodAdapter(listOfFoods,this@HomeFragment)
         }
     }
+    //=======================================================================================
+
+
+    //-------------------------SET IMAGE AND IF THE WIDTH > HEIGHT ROTATE THIS PHOTO------------------------------
 
     private fun setImage(url:String){
         CoroutineScope(Dispatchers.IO).launch{
@@ -176,8 +197,9 @@ class HomeFragment : Fragment() {
                 randomFoodImage.setImageBitmap(image)
             }
         }
-
     }
+
+    //=============================================================================================================
 }
 
 
