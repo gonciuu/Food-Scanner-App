@@ -75,9 +75,10 @@
                         android:id="@+id/randomFoodImage"
                         android:layout_width="100dp"
                         android:layout_height="190dp"
+                        android:paddingLeft="5dp"
                         android:layout_gravity="center"
                         android:contentDescription="TODO"
-                        android:src="@drawable/zdj" />
+                        android:src="@drawable/camera" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -94,7 +95,7 @@
                             android:fontFamily="@font/segoeuib"
                             android:maxLines="1"
                             android:paddingLeft="20dp"
-                            android:text="Chinnese salad"
+                            android:text="Loading..."
                             android:textColor="@color/darkGray"
                             android:textSize="20sp" />
 
@@ -110,7 +111,7 @@
                             android:maxLines="1"
                             android:paddingLeft="20dp"
                             android:paddingRight="15dp"
-                            android:text="Calories : 254"
+                            android:text="Calories : loading..."
                             android:textColor="@color/darkGray"
                             android:textSize="14sp" />
 
@@ -125,7 +126,8 @@
                             android:maxLines="2"
                             android:paddingLeft="20dp"
                             android:paddingRight="25dp"
-                            android:text="tomatoes, oregano, sausage, movies, money, iron, nutrinions, onion"
+                            android:text="loading ingredients...\nloading ingredients..."
+                            android:minLines="2"
                             android:textColor="@color/darkGray"
                             android:textSize="15sp" />
 
