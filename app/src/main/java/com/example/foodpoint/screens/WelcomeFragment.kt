@@ -1,15 +1,16 @@
 package com.example.foodpoint.screens
 
+import android.R.attr.delay
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.foodpoint.R
 import com.example.foodpoint.api.food_class.Food
@@ -21,7 +22,23 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+
 class WelcomeFragment : Fragment() {
+
+    private val handler = Handler()
+
+    private var autoPageScroll: Runnable = object : Runnable {
+        override fun run() {
+            val currentPage = welcomeViewPager.currentItem
+            if(currentPage == welcomeViewPager.childCount){
+                welcomeViewPager.setCurrentItem(0,true)
+            }else{
+                welcomeViewPager.setCurrentItem(currentPage+1,true)
+            }
+            handler.postDelayed(this,2000)
+        }
+    }
+
 
     companion object{
         const val CAMERA_PERMISSION_REQUEST_CODE = 1234
@@ -39,6 +56,7 @@ class WelcomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupViewPager()
         getApi()
+
     }
 
 
@@ -101,11 +119,21 @@ class WelcomeFragment : Fragment() {
             tab.requestLayout()
         }
 
+        handler.postDelayed(autoPageScroll,2000)
+
         startButton.setOnClickListener {
             getCameraPermission()
             findNavController().navigate(R.id.action_welcomeFragment_to_homeFragment)
         }
 
     }
+
+
+
+    override fun onStop() {
+        super.onStop()
+        handler.removeCallbacks(autoPageScroll)
+    }
+
 }
 
