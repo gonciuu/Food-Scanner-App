@@ -43,7 +43,7 @@ data class Nutriments(
     @SerializedName("energy-kcal_100g")
     val energyKcal100g: Int,
     @SerializedName("energy-kcal_serving")
-    val energyKcalServing: Int,
+    val energyKcalServing: Double,
     @SerializedName("energy-kcal_unit")
     val energyKcalUnit: String,
     @SerializedName("energy-kcal_value")
