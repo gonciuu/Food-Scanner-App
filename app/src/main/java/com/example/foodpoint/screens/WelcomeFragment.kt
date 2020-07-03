@@ -27,6 +27,7 @@ class WelcomeFragment : Fragment() {
 
     private val handler = Handler()
 
+    //-----------------------------AUTO SCROLL IN VIEWPAGER----------------------------------
     private var autoPageScroll: Runnable = object : Runnable {
         override fun run() {
             val currentPage = welcomeViewPager.currentItem
@@ -38,6 +39,7 @@ class WelcomeFragment : Fragment() {
             handler.postDelayed(this,2000)
         }
     }
+    //======================================================================================
 
 
     companion object{
@@ -55,12 +57,11 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViewPager()
-        getApi()
-
     }
 
 
 
+    //------------------GET CAMERA PERMISSION IF IT ISN'T GRANTED-----------------------
     private fun getCameraPermission(){
         if(Build.VERSION.SDK_INT>=23){
             if(ContextCompat.checkSelfPermission(requireContext(),android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
@@ -68,30 +69,22 @@ class WelcomeFragment : Fragment() {
             }
         }
     }
+    //==================================================================================
 
+    //-----------------------INFINITY GET PERMISSION--------------------------
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
         if(requestCode == CAMERA_PERMISSION_REQUEST_CODE){
             if(grantResults[0] != PackageManager.PERMISSION_GRANTED){
                 getCameraPermission()
             }
         }
     }
+    //=========================================================================
 
 
-    private fun getApi() {
-        var food: Food? = null
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                food = RetrofitClient.instance.getFoodAsync("5900951027307").await().body()
-                Log.d("TAG", food!!.product.productName)
-            } catch (ex: Exception) {
-                Log.d("TAG", ex.message!!)
-            }
-        }
-    }
 
+    //-------------------SETUP VIEWPAGER IN WELCOME FRAGMENT BY PASS DATA IN IT---------------------
     private fun setupViewPager() {
         val listOfPagerCard = arrayListOf<ViewPagerCard>(
             ViewPagerCard(
@@ -127,6 +120,7 @@ class WelcomeFragment : Fragment() {
         }
 
     }
+    //===========================================================================================================
 
 
 
