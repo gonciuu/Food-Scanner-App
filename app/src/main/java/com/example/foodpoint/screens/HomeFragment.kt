@@ -44,12 +44,18 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         foodInfoViewModel = ViewModelProvider(requireActivity()).get(FoodInfoViewModel::class.java)
-        historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
-            .create(HistoryViewModel::class.java)
+        historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(HistoryViewModel::class.java)
+        setLoadingAdapter()
         setBottomBarButtonsClick()
         getListOfFood()
     }
 
+    private fun setLoadingAdapter(){
+        popularFoodsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = PopularFoodAdapter(arrayListOf(),this@HomeFragment)
+        }
+    }
 
     private fun setBottomBarButtonsClick() {
 

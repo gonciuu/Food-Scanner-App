@@ -26,26 +26,32 @@ class PopularFoodAdapter(private val listOfFood:ArrayList<SimplyfiFood>,private 
     }
 
     override fun getItemCount(): Int {
-        return listOfFood.size
+        return if(listOfFood.isNotEmpty()) listOfFood.size
+        else 5
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PopularFoodsViewHolder, position: Int) {
-        holder.foodName.text = listOfFood[holder.adapterPosition].name
-        setImage(listOfFood[holder.adapterPosition].imageUrl,holder.foodImage,fr.requireActivity())
 
-        if(listOfFood[holder.adapterPosition].ingredients.isNotEmpty()) { listOfFood[holder.adapterPosition].ingredients.forEach {
-                holder.foodIngredients.text = holder.foodIngredients.text.toString() + it.text.removeSuffix("_").removePrefix("_") + ", "
+        if(listOfFood.isNotEmpty()) {
+            holder.foodIngredients.text = ""
+            holder.foodName.text = listOfFood[holder.adapterPosition].name
+            setImage(listOfFood[holder.adapterPosition].imageUrl, holder.foodImage, fr.requireActivity())
+
+            if (listOfFood[holder.adapterPosition].ingredients.isNotEmpty()) {
+                listOfFood[holder.adapterPosition].ingredients.forEach {
+                    holder.foodIngredients.text = holder.foodIngredients.text.toString() + it.text.removeSuffix("_").removePrefix("_") + ", "
+                }
+                holder.foodIngredients.text = holder.foodIngredients.text.toString().removePrefix(",").removeSuffix(",")
+            } else {
+                holder.foodIngredients.text = "Cannot find food ingredients"
             }
-            holder.foodIngredients.text = holder.foodIngredients.text.toString().removePrefix(",").removeSuffix(",")
-        }else{
-            holder.foodIngredients.text = "Cannot find food ingredients"
-        }
 
-        holder.checkButton.setOnClickListener {
-            fr.foodInfoViewModel.setFood(listOfFood[holder.adapterPosition])
-            fr.historyViewModel.insertHistory(listOfFood[holder.adapterPosition])
-            fr.findNavController().navigate(R.id.action_homeFragment_to_foodDetailsFragment)
+            holder.checkButton.setOnClickListener {
+                fr.foodInfoViewModel.setFood(listOfFood[holder.adapterPosition])
+                fr.historyViewModel.insertHistory(listOfFood[holder.adapterPosition])
+                fr.findNavController().navigate(R.id.action_homeFragment_to_foodDetailsFragment)
+            }
         }
     }
 

@@ -29,7 +29,7 @@
                 android:layout_width="70dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
-                android:src="@drawable/zdj" />
+                android:src="@drawable/camera" />
 
 
             <TextView
@@ -40,7 +40,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/segoeuib"
                 android:maxLines="1"
-                android:text="Waldorf Salad"
+                android:text="Loading..."
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textSize="17sp" />
@@ -53,6 +53,7 @@
                 android:fontFamily="@font/segoeuisb"
                 android:maxLines="2"
                 android:minLines="2"
+                android:text="Loading...\nLoading..."
                 android:textAlignment="center"
                 android:textColor="@color/darkGray"
                 android:textSize="15sp" />
