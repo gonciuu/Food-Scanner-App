@@ -52,6 +52,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/segoeuisb"
                 android:maxLines="2"
+                android:minLines="2"
                 android:textAlignment="center"
                 android:textColor="@color/darkGray"
                 android:textSize="15sp" />

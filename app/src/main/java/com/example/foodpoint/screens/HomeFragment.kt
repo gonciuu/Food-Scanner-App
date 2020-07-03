@@ -135,9 +135,15 @@ class HomeFragment : Fragment() {
         setImage(food.imageUrl)
         randomFoodName.text = food.name
         randomFoodCalories.text = "Calories : ${(food.calories * (food.quantity.toDouble()/100)).toInt()}"
-        food.ingredients.forEach {
-            randomFoodIngredients.text = randomFoodIngredients.text.toString() + it.text.removePrefix("_").removeSuffix("_") + ", "
+
+        if(food.ingredients.isNotEmpty()){
+            food.ingredients.forEach {
+                randomFoodIngredients.text = randomFoodIngredients.text.toString() + it.text.removePrefix("_").removeSuffix("_") + ", "
+            }
+        }else{
+            randomFoodIngredients.text = "Cannot find ingredients in database"
         }
+
         randomFoodCheckButton.setOnClickListener {
             foodInfoViewModel.setFood(food)
             historyViewModel.insertHistory(food)

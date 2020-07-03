@@ -4,17 +4,15 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.foodpoint.R
 import com.example.foodpoint.api.food_class.food_class_to_communicate_wwith_others.SimplyfiFood
-import com.example.foodpoint.history_database.HistoryViewModel
 import com.example.foodpoint.screens.view_models.FoodInfoViewModel
 import com.example.foodpoint.screens.view_models.ScanViewModel
 import com.squareup.picasso.Picasso
@@ -54,10 +52,10 @@ class FoodDetailsFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun setFoodInfo(){
-        caloriesCount.text = (food.calories * (food.quantity.toDouble()/100)).toString()
-        carbohydratesCount.text = String.format("%.2f",(food.carbohydrates * (food.quantity.toDouble()/100))) + " g"
-        proteinsCount.text = String.format("%.2f",(food.proteins * (food.quantity.toDouble()/100)))+ " g"
-        fatCount.text = String.format("%.2f",(food.fats * (food.quantity.toDouble()/100)))+ " g"
+        caloriesCount.text = (food.calories * (food.quantity.toDouble()/100)).toInt().toString()
+        carbohydratesCount.text = String.format("%.1f",(food.carbohydrates * (food.quantity.toDouble()/100))) + " g"
+        proteinsCount.text = String.format("%.1f",(food.proteins * (food.quantity.toDouble()/100)))+ " g"
+        fatCount.text = String.format("%.1f",(food.fats * (food.quantity.toDouble()/100)))+ " g"
         foodName.text = food.name
         setFoodCategories()
         setVeganAndVegetarianState()
@@ -114,21 +112,39 @@ class FoodDetailsFragment : Fragment() {
             food.allergens.forEach {
                 foodAllergensNutrinions.text = foodAllergensNutrinions.text.toString() + it.removeRange(0,it.indexOf(":")+1) +", "
            }
-            for (ingredient in food.ingredients) {
-                for(i in food.allergens){
-                    if(i != ingredient.text){
-                        foodNotAllergensNutrinions.text = foodNotAllergensNutrinions.text.toString() + ingredient.text.removeRange(0,ingredient.text.indexOf(":")+1).replace("_","") +", "
-                        break
+            if(food.ingredients.isNotEmpty()) {
+                for (ingredient in food.ingredients) {
+                    for (i in food.allergens) {
+                        if (i != ingredient.text) {
+                            foodNotAllergensNutrinions.text =
+                                foodNotAllergensNutrinions.text.toString() + ingredient.text.removeRange(
+                                    0,
+                                    ingredient.text.indexOf(":") + 1
+                                ).replace("_", "") + ", "
+                            break
+                        }
                     }
                 }
+            }else{
+                foodNotAllergensNutrinions.text = "Cannot find ingredients"
             }
-        }else{
+            foodNotAllergensNutrinions.text = removeLastChar(foodNotAllergensNutrinions.text.toString())
+            foodAllergensNutrinions.text = removeLastChar(foodAllergensNutrinions.text.toString())
+        }else {
             foodAllergensNutrinions.text = "No any allergens ingredients"
-            for (ingredient in food.ingredients) {
-                    foodNotAllergensNutrinions.text = foodNotAllergensNutrinions.text.toString() + ingredient.text.removeRange(0,ingredient.text.indexOf(":")+1).replace("_","") +", "
+            if (food.ingredients.isNotEmpty()) {
+                for (ingredient in food.ingredients) {
+                    foodNotAllergensNutrinions.text =
+                        foodNotAllergensNutrinions.text.toString() + ingredient.text.removeRange(
+                            0,
+                            ingredient.text.indexOf(":") + 1
+                        ).replace("_", "") + ", "
                 }
+            } else {
+                foodNotAllergensNutrinions.text = "Cannot find ingredients"
             }
         }
+    }
 
     //=======================================================================================
 
@@ -171,4 +187,12 @@ class FoodDetailsFragment : Fragment() {
         }
     }
     //===================================================================
+
+    private fun removeLastChar(str: String?): String? {
+        var str = str
+        if (str != null && str.isNotEmpty() && str[str.length - 1] == ',') {
+            str = str.substring(0, str.length - 1)
+        }
+        return str
+    }
 }

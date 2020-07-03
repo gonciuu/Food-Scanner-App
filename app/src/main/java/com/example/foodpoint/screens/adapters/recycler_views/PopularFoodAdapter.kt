@@ -20,7 +20,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class PopularFoodAdapter(private val listOfFood:ArrayList<SimplyfiFood>,val fr: HomeFragment):RecyclerView.Adapter<PopularFoodsViewHolder>(){
+class PopularFoodAdapter(private val listOfFood:ArrayList<SimplyfiFood>,private val fr: HomeFragment):RecyclerView.Adapter<PopularFoodsViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularFoodsViewHolder {
         return PopularFoodsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.popular_food_card,parent,false))
     }
@@ -33,8 +33,13 @@ class PopularFoodAdapter(private val listOfFood:ArrayList<SimplyfiFood>,val fr: 
     override fun onBindViewHolder(holder: PopularFoodsViewHolder, position: Int) {
         holder.foodName.text = listOfFood[holder.adapterPosition].name
         setImage(listOfFood[holder.adapterPosition].imageUrl,holder.foodImage,fr.requireActivity())
-        listOfFood[holder.adapterPosition].ingredients.forEach {
-            holder.foodIngredients.text = holder.foodIngredients.text.toString() + it.text.removeSuffix("_").removePrefix("_") + ", "
+
+        if(listOfFood[holder.adapterPosition].ingredients.isNotEmpty()) { listOfFood[holder.adapterPosition].ingredients.forEach {
+                holder.foodIngredients.text = holder.foodIngredients.text.toString() + it.text.removeSuffix("_").removePrefix("_") + ", "
+            }
+            holder.foodIngredients.text = holder.foodIngredients.text.toString().removePrefix(",").removeSuffix(",")
+        }else{
+            holder.foodIngredients.text = "Cannot find food ingredients"
         }
 
         holder.checkButton.setOnClickListener {
