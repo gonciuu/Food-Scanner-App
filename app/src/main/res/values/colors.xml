@@ -11,4 +11,5 @@
     <color name="white">#FFFFFF</color>
     <color name="gray_home_bg">#E4E4E4</color>
     <color name="medium_gray">#666666</color>
+    <color name="text_dark_gray">#313131</color>
 </resources>

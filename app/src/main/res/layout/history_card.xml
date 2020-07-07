@@ -9,7 +9,7 @@
     android:layout_marginRight="20dp"
     android:layout_marginBottom="11dp"
     android:background="@drawable/little_rounded_bg"
-    android:backgroundTint="#E4E4E4"
+    android:backgroundTint="@color/gray_home_bg"
     android:gravity="center"
     android:orientation="horizontal"
     android:padding="20dp">

@@ -113,7 +113,7 @@
             android:hint="Enter barcode..."
             android:inputType="number"
             android:padding="22dp"
-            android:textColorHint="#FF5722"
+            android:textColorHint="@color/orange"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,5 +1,6 @@
 package com.example.foodpoint.screens
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.text.format.DateUtils
@@ -52,10 +53,11 @@ class ScanHistoryFragment : Fragment() {
         historyViewModel.allHistory.observe(viewLifecycleOwner,observer)
     }
 
+    @SuppressLint("ResourceType")
     private fun setHistoryTimeButtons(){
 
         todayButton.setOnClickListener {
-            setColors("#E4E4E4","#FE7D55","#313131","#ffffff")
+            setColors(resources.getString(R.color.gray_home_bg),resources.getString(R.color.orange),resources.getString(R.color.text_dark_gray),"#ffffff")
             val listOfTodaySearch = arrayListOf<SimplyfiFood>()
             listOfSearchHistory.forEach {
                 if(DateUtils.isToday(it.searchDate)){
@@ -66,7 +68,7 @@ class ScanHistoryFragment : Fragment() {
         }
 
         allButton.setOnClickListener {
-            setColors("#FE7D55","#E4E4E4","#ffffff","#313131")
+            setColors(resources.getString(R.color.orange),resources.getString(R.color.gray_home_bg),"#ffffff",resources.getString(R.color.text_dark_gray))
             historyRecyclerView.adapter = HistoryRecyclerViewAdapter(listOfSearchHistory,historyViewModel)
         }
     }
