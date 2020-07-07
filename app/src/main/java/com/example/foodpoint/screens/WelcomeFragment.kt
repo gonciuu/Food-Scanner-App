@@ -1,6 +1,7 @@
 package com.example.foodpoint.screens
 
 import android.R.attr.delay
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -57,9 +59,17 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViewPager()
+        setDarkMode()
     }
 
 
+    //----------------------------SET MODE SAVED IN SHARED PREFERENCES DARK/LIGHT---------------------------
+    private fun setDarkMode(){
+        val darkModeStateSP = requireActivity().getSharedPreferences("DARK_MODE", Context.MODE_PRIVATE)
+        if(darkModeStateSP.getBoolean("isDark",false)) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
+    //=======================================================================================================
 
     //------------------GET CAMERA PERMISSION IF IT ISN'T GRANTED-----------------------
     private fun getCameraPermission(){
