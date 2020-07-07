@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,7 @@ import com.example.foodpoint.dialogs.DialogAlert
 import com.example.foodpoint.history_database.HistoryViewModel
 import com.example.foodpoint.screens.adapters.recycler_views.PopularFoodAdapter
 import com.example.foodpoint.screens.view_models.FoodInfoViewModel
+import com.example.foodpoint.screens.view_models.HomeViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_food_details.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -33,6 +35,7 @@ import kotlin.random.Random
 class HomeFragment : Fragment() {
     lateinit var foodInfoViewModel: FoodInfoViewModel
     lateinit var historyViewModel: HistoryViewModel
+    private lateinit var homeViewModel: HomeViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,6 +48,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         foodInfoViewModel = ViewModelProvider(requireActivity()).get(FoodInfoViewModel::class.java)
         historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(HistoryViewModel::class.java)
+        homeViewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
         setLoadingAdapter()
         setBottomBarButtonsClick()
         getListOfFood()
@@ -89,6 +93,7 @@ class HomeFragment : Fragment() {
     //---------------------GET LIST OF SILMPLIFY FOOD FROM API FROM FOOD BARCODE IN LIST-------------------------
     private fun getListOfFood() {
 
+
         val foodsIdList = arrayListOf<String>("5906040063577", "4014400900576", "7613034944849", "5900084231145", "20142322", "5900512320359")
 
         val listOfFood = arrayListOf<SimplyfiFood>()
@@ -132,6 +137,7 @@ class HomeFragment : Fragment() {
                 setRandomFoodInfoInUI(randomFood)
                 listOfFood.remove(randomFood)
                 setTopPopularFoodsAdapter(listOfFood)
+                //homeViewModel.setFood(listOfFood)
             }
 
         }
