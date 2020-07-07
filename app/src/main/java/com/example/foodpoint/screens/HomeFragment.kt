@@ -1,6 +1,7 @@
 package com.example.foodpoint.screens
 
 import android.annotation.SuppressLint
+import android.content.Context.MODE_PRIVATE
 import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -56,13 +58,15 @@ class HomeFragment : Fragment() {
 
     //--------------------SET ADAPTER TO RECYCLER VIEW AS "LOADING"-----------------------
     private fun setLoadingAdapter(){
+        val isDark = requireActivity().getSharedPreferences("DARK_MODE",MODE_PRIVATE).getBoolean("isDark",false)
+        if(isDark) randomFoodImage.setImageResource(R.drawable.camera_nightmode)
+
         popularFoodsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = PopularFoodAdapter(arrayListOf(),this@HomeFragment)
+            adapter = PopularFoodAdapter(arrayListOf(),this@HomeFragment,isDark)
         }
     }
     //====================================================================================
-
 
     //----------------------SET ON CLICK ON BUTTONS IN BOTTOM BAR AND THE FLOATING ACTION BUTTON----------------------
 
@@ -183,7 +187,7 @@ class HomeFragment : Fragment() {
     private fun setTopPopularFoodsAdapter(listOfFoods: ArrayList<SimplyfiFood>){
         popularFoodsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = PopularFoodAdapter(listOfFoods,this@HomeFragment)
+            adapter = PopularFoodAdapter(listOfFoods,this@HomeFragment,null)
         }
     }
     //=======================================================================================

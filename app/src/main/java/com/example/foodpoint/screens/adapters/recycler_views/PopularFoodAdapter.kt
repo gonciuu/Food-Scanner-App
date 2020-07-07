@@ -20,7 +20,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class PopularFoodAdapter(private val listOfFood:ArrayList<SimplyfiFood>,private val fr: HomeFragment):RecyclerView.Adapter<PopularFoodsViewHolder>(){
+class PopularFoodAdapter(private val listOfFood:ArrayList<SimplyfiFood>,private val fr: HomeFragment,private val isDark:Boolean?):RecyclerView.Adapter<PopularFoodsViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularFoodsViewHolder {
         return PopularFoodsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.popular_food_card,parent,false))
     }
@@ -32,6 +32,8 @@ class PopularFoodAdapter(private val listOfFood:ArrayList<SimplyfiFood>,private 
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PopularFoodsViewHolder, position: Int) {
+
+        if(isDark!=null) if(isDark)holder.foodImage.setImageResource(R.drawable.camera_nightmode)
 
         //--------------------SET FOOD INFO IN CARD UI---------------------
         if(listOfFood.isNotEmpty()) {

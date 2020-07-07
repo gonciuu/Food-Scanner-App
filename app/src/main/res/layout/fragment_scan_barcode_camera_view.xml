@@ -28,7 +28,7 @@
             android:padding="10dp"
             android:tint="@color/darkGray"
             android:background="@drawable/rounded_bg"
-            android:backgroundTint="#DBDBDB" />
+            android:backgroundTint="@color/gray_home_bg" />
 
         <ImageView
             android:id="@+id/focusButton"
@@ -39,7 +39,7 @@
             android:padding="10dp"
             android:tint="@color/darkGray"
             android:background="@drawable/rounded_bg"
-            android:backgroundTint="#DBDBDB" />
+            android:backgroundTint="@color/gray_home_bg" />
 
     </LinearLayout>
 
