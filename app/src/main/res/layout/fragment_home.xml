@@ -8,7 +8,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E4E4E4">
+        android:background="@color/gray_home_bg">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="28dp"
-                android:backgroundTint="#eeeeee"
+                android:backgroundTint="@color/white"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
@@ -146,7 +146,7 @@
                             android:padding="9dp"
                             android:text="Check"
                             android:textAlignment="center"
-                            android:textColor="@color/white" />
+                            android:textColor="#ffffff" />
 
                     </LinearLayout>
 
@@ -183,7 +183,7 @@
         android:layout_gravity="bottom"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        app:backgroundTint="#fff"
+        app:backgroundTint="@color/white"
         app:fabAlignmentMode="center"
         app:fabAnimationMode="scale"
         app:fabCradleMargin="7dp"
@@ -201,6 +201,6 @@
         app:backgroundTint="@color/orange"
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="30dp"
-        app:tint="@color/colorAccent" />
+        app:tint="#ffffff" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
