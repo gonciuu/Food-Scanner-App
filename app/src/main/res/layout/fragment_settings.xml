@@ -50,7 +50,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="22dp"
                 android:text="Custom App"
-                android:textColor="#666"
+                android:textColor="@color/medium_gray"
                 android:textSize="18sp" />
         </LinearLayout>
         <LinearLayout
@@ -103,7 +103,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="22dp"
                 android:text="Notifications and language"
-                android:textColor="#666"
+                android:textColor="@color/medium_gray"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -201,7 +201,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="22dp"
                 android:text="App"
-                android:textColor="#666"
+                android:textColor="@color/medium_gray"
                 android:textSize="18sp" />
         </LinearLayout>
 
