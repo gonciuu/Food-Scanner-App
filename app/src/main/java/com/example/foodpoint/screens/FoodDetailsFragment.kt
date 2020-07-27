@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_food_details.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import kotlin.random.Random
 
 
@@ -162,17 +163,22 @@ class FoodDetailsFragment : Fragment() {
 
     //--------------------SET FOOD IMAGE IN SQUARE AND IF IMAGE WIDTH > HEIGHT THEN ROTATE IT ON 90 DEEGRESS----------------
     private fun setImage(){
-        CoroutineScope(Dispatchers.IO).launch{
-            var image = Picasso.get().load(food.imageUrl).get()
-            if(image.width > image.height){
-                val matrix : Matrix? = Matrix()
-                matrix?.postRotate(90f)
-                image = Bitmap.createBitmap(image,0,0,image.width,image.height,matrix,true)
+        try{
+            CoroutineScope(Dispatchers.IO).launch{
+                var image = Picasso.get().load(food.imageUrl).get()
+                if(image.width > image.height){
+                    val matrix : Matrix? = Matrix()
+                    matrix?.postRotate(90f)
+                    image = Bitmap.createBitmap(image,0,0,image.width,image.height,matrix,true)
+                }
+                requireActivity().runOnUiThread {
+                    foodImage.setImageBitmap(image)
+                }
             }
-            requireActivity().runOnUiThread {
-                foodImage.setImageBitmap(image)
-            }
+        }catch (ex:Exception){
+            foodImage.setImageResource(R.drawable.camera)
         }
+
 
     }
     //=====================================================================================================================

@@ -152,7 +152,9 @@ class HomeFragment : Fragment() {
 
     //--------------FUNCTION WHITCH SHOW CUSTOM ALERT DIALOG-------------------
     private fun showDialog(title:String,message:String){
+        try{
             DialogAlert(title, message).show(requireActivity().supportFragmentManager, "error")
+        }catch (ex:java.lang.Exception){}
     }
     //=========================================================================
 
@@ -161,34 +163,39 @@ class HomeFragment : Fragment() {
     //-------------------------SETTING THE INFO ABOUT RANDOM FOOD IN UI IN HOME FRAGMENT-----------------------------
     @SuppressLint("SetTextI18n")
     private fun setRandomFoodInfoInUI(food: SimplyfiFood){
-        randomFoodIngredients.text =""
-        setImage(food.imageUrl)
-        randomFoodName.text = food.name
-        randomFoodCalories.text = "Calories : ${(food.calories * (food.quantity.toDouble()/100)).toInt()}"
+        try{
+            randomFoodIngredients.text =""
+            setImage(food.imageUrl)
+            randomFoodName.text = food.name
+            randomFoodCalories.text = "Calories : ${(food.calories * (food.quantity.toDouble()/100)).toInt()}"
 
-        if(food.ingredients.isNotEmpty()){
-            food.ingredients.forEach {
-                randomFoodIngredients.text = randomFoodIngredients.text.toString() + it.text.removePrefix("_").removeSuffix("_") + ", "
+            if(food.ingredients.isNotEmpty()){
+                food.ingredients.forEach {
+                    randomFoodIngredients.text = randomFoodIngredients.text.toString() + it.text.removePrefix("_").removeSuffix("_") + ", "
+                }
+            }else{
+                randomFoodIngredients.text = "Cannot find ingredients in database"
             }
-        }else{
-            randomFoodIngredients.text = "Cannot find ingredients in database"
-        }
 
-        randomFoodCheckButton.setOnClickListener {
-            foodInfoViewModel.setFood(food)
-            historyViewModel.insertHistory(food)
-            findNavController().navigate(R.id.action_homeFragment_to_foodDetailsFragment)
-        }
+            randomFoodCheckButton.setOnClickListener {
+                foodInfoViewModel.setFood(food)
+                historyViewModel.insertHistory(food)
+                findNavController().navigate(R.id.action_homeFragment_to_foodDetailsFragment)
+            }
+        }catch (ex : Exception){}
+
     }
     //=================================================================================================================
 
 
     //------------------SET FOOD ADPATER AFTER GET FOOD INFO FROM API-----------------------
     private fun setTopPopularFoodsAdapter(listOfFoods: ArrayList<SimplyfiFood>){
-        popularFoodsRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = PopularFoodAdapter(listOfFoods,this@HomeFragment,null)
-        }
+        try{
+            popularFoodsRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = PopularFoodAdapter(listOfFoods,this@HomeFragment,null)
+            }
+        }catch (ex : java.lang.Exception){}
     }
     //=======================================================================================
 
@@ -197,15 +204,22 @@ class HomeFragment : Fragment() {
 
     private fun setImage(url:String){
         CoroutineScope(Dispatchers.IO).launch{
-            var image = Picasso.get().load(url).get()
-            if(image.width > image.height){
-                val matrix : Matrix? = Matrix()
-                matrix?.postRotate(90f)
-                image = Bitmap.createBitmap(image,0,0,image.width,image.height,matrix,true)
+            try{
+                var image = Picasso.get().load(url).get()
+                if(image.width > image.height){
+                    val matrix : Matrix? = Matrix()
+                    matrix?.postRotate(90f)
+                    image = Bitmap.createBitmap(image,0,0,image.width,image.height,matrix,true)
+                }
+                requireActivity().runOnUiThread {
+                    if(randomFoodImage!=null) randomFoodImage.setImageBitmap(image)
+                }
+            }catch (ex:Exception){
+                requireActivity().runOnUiThread {
+                    randomFoodImage.setImageResource(R.drawable.camera)
+                }
             }
-            requireActivity().runOnUiThread {
-                randomFoodImage.setImageBitmap(image)
-            }
+
         }
     }
 
