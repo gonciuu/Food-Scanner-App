@@ -6,5 +6,18 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <style name="MyDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:background">#232323</item>
+        <item name="android:textColorAlertDialogListItem">#fff</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/segoeuisb</item>
+        <item name="android:textColorPrimary">#fff</item>
+        <item name="android:buttonTint">#FFFFFF</item>
+        <item name="android:itemBackground">#fff</item>
+        <item name="colorControlNormal">#fff</item>
+        <item name="colorControlActivated">#fff</item>
+        <item name="android:colorPrimary">#fff</item>
+        <item name="colorAccent">#fff</item>
+    </style>
 </resources>

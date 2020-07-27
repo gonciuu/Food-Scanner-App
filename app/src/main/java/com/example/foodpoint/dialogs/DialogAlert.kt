@@ -5,12 +5,13 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
+import com.example.foodpoint.R
 import java.lang.IllegalStateException
 
 class DialogAlert(private val title:String,private val message:String) : DialogFragment(){
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return requireActivity().let {
-            val builder = AlertDialog.Builder(it)
+            val builder = AlertDialog.Builder(it, R.style.MyDialogTheme)
             builder.setTitle(title).setMessage(message).setNeutralButton(
                 "OK",DialogInterface.OnClickListener{dialog,id->}
             )
