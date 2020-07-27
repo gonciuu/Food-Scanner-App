@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.findNavController
 import com.example.foodpoint.R
 import com.example.foodpoint.dialogs.DialogAlert
+import com.example.foodpoint.dialogs.ListViewDialog
 import kotlinx.android.synthetic.main.fragment_settings.*
 import java.lang.Exception
 
@@ -30,6 +31,7 @@ class SettingsFragment : Fragment() {
 
         darkModeStateSP = requireActivity().getSharedPreferences("DARK_MODE", Context.MODE_PRIVATE)
         helpAndAppVersionOnClicks()
+        setLanguageOnClick()
         nightMode.setOnClickListener {
             findNavController().navigate(R.id.action_settingsFragment_to_homeFragment)
         }
@@ -68,6 +70,16 @@ class SettingsFragment : Fragment() {
         helpDialog.setOnClickListener {
             try {
                 DialogAlert("Help","To start scanning products click on the orange icon in bottom menu. Then click on barcode image to scan or enter barcode number manually. App will be atomically show you food results if it exist in database else show dialog which contains error info").show(requireActivity().supportFragmentManager,"help_dialog")
+            }catch (ex:Exception){}
+        }
+    }
+
+    private fun setLanguageOnClick(){
+        setLanguage.setOnClickListener {
+
+            try{
+                val prefs = requireActivity().getSharedPreferences("OPTIONS",MODE_PRIVATE)
+                ListViewDialog(prefs,"Choose Language",arrayOf("Germany","English","Polish"), prefs.getString("lang","English")!!).show(requireActivity().supportFragmentManager,"language_choose")
             }catch (ex:Exception){}
         }
     }
