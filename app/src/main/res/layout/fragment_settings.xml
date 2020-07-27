@@ -102,57 +102,17 @@
                 android:fontFamily="@font/segoeuib"
                 android:gravity="center_vertical"
                 android:paddingLeft="22dp"
-                android:text="Notifications and language"
+                android:text="language"
                 android:textColor="@color/medium_gray"
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/userEnterSex"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
-            android:onClick="setUserData"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_weight="2"
-                android:padding="5dp"
-                android:src="@drawable/ic_notifications" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:paddingLeft="15dp"
-                android:text="Notifications"
-                android:textColor="@color/darkGray"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <Switch
-                android:id="@+id/notificationsSwitch"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="25dp"
-                android:layout_weight="2"
-                android:backgroundTint="@color/gray"
-                android:gravity="center"
-                android:thumbTint="@color/orange" />
-
-        </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/userEnterWeight"
+            android:id="@+id/setLanguage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:onClick="setUserData"
             android:orientation="horizontal">
 
             <ImageView
@@ -206,11 +166,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/enterSpeedUnit"
+            android:id="@+id/setFactorySettings"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
-            android:onClick="setUserData"
             android:orientation="horizontal">
 
             <ImageView
@@ -247,11 +206,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/enterAltitudeUnit"
+            android:id="@+id/helpDialog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:onClick="setUserData"
             android:orientation="horizontal">
 
             <ImageView
@@ -288,11 +246,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/enterDistanceUnit"
+            android:id="@+id/appVersion"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:onClick="setUserData"
             android:orientation="horizontal">
 
             <ImageView

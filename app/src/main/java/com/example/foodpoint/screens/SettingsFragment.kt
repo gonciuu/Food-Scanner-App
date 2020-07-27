@@ -12,7 +12,9 @@ import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.findNavController
 import com.example.foodpoint.R
+import com.example.foodpoint.dialogs.DialogAlert
 import kotlinx.android.synthetic.main.fragment_settings.*
+import java.lang.Exception
 
 
 class SettingsFragment : Fragment() {
@@ -27,7 +29,7 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         darkModeStateSP = requireActivity().getSharedPreferences("DARK_MODE", Context.MODE_PRIVATE)
-
+        helpAndAppVersionOnClicks()
         nightMode.setOnClickListener {
             findNavController().navigate(R.id.action_settingsFragment_to_homeFragment)
         }
@@ -54,6 +56,19 @@ class SettingsFragment : Fragment() {
                 darkModeStateSP.edit().putBoolean("isDark",false).apply()
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
+        }
+    }
+
+    private fun helpAndAppVersionOnClicks(){
+        appVersion.setOnClickListener {
+            try {
+                DialogAlert("App version","2.20.009").show(requireActivity().supportFragmentManager,"app_version")
+            }catch (ex:Exception){}
+        }
+        helpDialog.setOnClickListener {
+            try {
+                DialogAlert("Help","To start scanning products click on the orange icon in bottom menu. Then click on barcode image to scan or enter barcode number manually. App will be atomically show you food results if it exist in database else show dialog which contains error info").show(requireActivity().supportFragmentManager,"help_dialog")
+            }catch (ex:Exception){}
         }
     }
 }
