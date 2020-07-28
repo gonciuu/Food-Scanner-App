@@ -22,4 +22,8 @@ class HistoryRepository(application: Application) {
 
     val allHistory = historyDao.getAllHistory()
 
+    suspend fun deleteAllHistory(){
+        historyDao.deleteAllHistory()
+    }
+
 }

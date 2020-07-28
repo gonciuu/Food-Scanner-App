@@ -20,4 +20,7 @@ interface HistoryDao {
     @Query("SELECT * FROM history_database ORDER BY id")
     fun getAllHistory():LiveData<List<SimplyfiFood>>
 
+    @Query("DELETE FROM history_database")
+    suspend fun deleteAllHistory()
+
 }

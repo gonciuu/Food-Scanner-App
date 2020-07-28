@@ -10,10 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.foodpoint.R
+import com.example.foodpoint.dialogs.ConfirmDialog
 import com.example.foodpoint.dialogs.DialogAlert
 import com.example.foodpoint.dialogs.ListViewDialog
+import com.example.foodpoint.history_database.HistoryViewModel
 import kotlinx.android.synthetic.main.fragment_settings.*
 import java.lang.Exception
 
@@ -32,6 +35,7 @@ class SettingsFragment : Fragment() {
         darkModeStateSP = requireActivity().getSharedPreferences("DARK_MODE", Context.MODE_PRIVATE)
         helpAndAppVersionOnClicks()
         setLanguageOnClick()
+        setFactorySettings()
         nightMode.setOnClickListener {
             findNavController().navigate(R.id.action_settingsFragment_to_homeFragment)
         }
@@ -76,11 +80,17 @@ class SettingsFragment : Fragment() {
 
     private fun setLanguageOnClick(){
         setLanguage.setOnClickListener {
-
             try{
                 val prefs = requireActivity().getSharedPreferences("OPTIONS",MODE_PRIVATE)
                 ListViewDialog(prefs,"Choose Language",arrayOf("Germany","English","Polish"), prefs.getString("lang","English")!!).show(requireActivity().supportFragmentManager,"language_choose")
             }catch (ex:Exception){}
+        }
+    }
+
+    private fun setFactorySettings(){
+        val historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(HistoryViewModel::class.java)
+        setFactorySettings.setOnClickListener {
+            ConfirmDialog("Are you sure?","Are u sure to delete all your data and back to factory settings",historyViewModel).show(requireActivity().supportFragmentManager,"factory_settings")
         }
     }
 }

@@ -25,4 +25,7 @@ class HistoryViewModel(application: Application):AndroidViewModel(application) {
         repository.deleteHistory(food)
     }
 
+    fun deleteAllHistory() = viewModelScope.launch(Dispatchers.IO){
+        repository.deleteAllHistory()
+    }
 }
