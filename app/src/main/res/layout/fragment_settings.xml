@@ -31,7 +31,7 @@
                 android:layout_height="match_parent"
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
-                android:text="Settings"
+                android:text="@string/settings_bar"
                 android:textColor="@color/darkGray"
                 android:textSize="32sp"
                 android:textStyle="bold" />
