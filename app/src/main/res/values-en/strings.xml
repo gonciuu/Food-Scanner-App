@@ -34,4 +34,8 @@
     <string name="food_point_keep_your_last_history_to_keep_your_all_scared_history_rate_my_app_please">Food point keep your last history to keep your all scared history Rate my app please!</string>
     <string name="today">Today</string>
     <string name="all">All</string>
+    <string name="choose_lang">Choose Language</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="sure_mess">Are u sure to delete all your data and back to factory settings?</string>
+    <string name="help_info">To start scanning products click on the orange icon in bottom menu. Then click on barcode image to scan or enter barcode number manually. App will be atomically show you food results if it exist in database else show dialog which contains error info</string>
 </resources>

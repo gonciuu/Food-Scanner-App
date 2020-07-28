@@ -73,7 +73,7 @@ class SettingsFragment : Fragment() {
         }
         helpDialog.setOnClickListener {
             try {
-                DialogAlert("Help","To start scanning products click on the orange icon in bottom menu. Then click on barcode image to scan or enter barcode number manually. App will be atomically show you food results if it exist in database else show dialog which contains error info").show(requireActivity().supportFragmentManager,"help_dialog")
+                DialogAlert(requireActivity().getString(R.string.help),requireActivity().getString(R.string.help_info)).show(requireActivity().supportFragmentManager,"help_dialog")
             }catch (ex:Exception){}
         }
     }
@@ -82,7 +82,7 @@ class SettingsFragment : Fragment() {
         setLanguage.setOnClickListener {
             try{
                 val prefs = requireActivity().getSharedPreferences("OPTIONS",MODE_PRIVATE)
-                ListViewDialog(prefs,"Choose Language",arrayOf("Germany","English","Polish"), prefs.getString("lang","English")!!).show(requireActivity().supportFragmentManager,"language_choose")
+                ListViewDialog(prefs, requireActivity().getString(R.string.choose_lang),arrayOf("Germany","English","Polish"), prefs.getString("lang","English")!!).show(requireActivity().supportFragmentManager,"language_choose")
             }catch (ex:Exception){}
         }
     }
@@ -90,7 +90,7 @@ class SettingsFragment : Fragment() {
     private fun setFactorySettings(){
         val historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(HistoryViewModel::class.java)
         setFactorySettings.setOnClickListener {
-            ConfirmDialog("Are you sure?","Are u sure to delete all your data and back to factory settings",historyViewModel).show(requireActivity().supportFragmentManager,"factory_settings")
+            ConfirmDialog(requireActivity().getString(R.string.are_you_sure),requireActivity().getString(R.string.sure_mess),historyViewModel).show(requireActivity().supportFragmentManager,"factory_settings")
         }
     }
 }

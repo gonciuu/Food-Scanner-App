@@ -34,4 +34,8 @@
     <string name="food_point_keep_your_last_history_to_keep_your_all_scared_history_rate_my_app_please">Food Point Behalte deine letzte Geschichte, um deine ängstliche Geschichte zu bewahren. Bewerte meine App bitte!</string>
     <string name="today">Heute</string>
     <string name="all">Alle</string>
+    <string name="choose_lang">Sprache wählen</string>
+    <string name="are_you_sure">Bist du sicher?</string>
+    <string name="sure_mess">Möchten Sie wirklich alle Ihre Daten löschen und auf die Werkseinstellungen zurücksetzen?</string>
+    <string name="help_info">Um mit dem Scannen von Produkten zu beginnen, klicken Sie auf das orangefarbene Symbol im unteren Menü. Klicken Sie dann auf das Barcode-Bild, um die Barcode-Nummer manuell zu scannen oder einzugeben. Die App zeigt Ihnen atomar Lebensmittelergebnisse an, wenn sie in der Datenbank vorhanden sind. Andernfalls wird ein Dialogfeld angezeigt, das Fehlerinformationen enthält</string>
 </resources>
