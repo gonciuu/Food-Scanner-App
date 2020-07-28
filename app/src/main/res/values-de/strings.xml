@@ -24,5 +24,10 @@
     <string name="random_food">Zufälliges Essen</string>
     <string name="popular_today">Heute Beliebt</string>
     <string name="check">Prüfen</string>
-
+    <string name="scan_food_barcode">Scannen Sie den Lebensmittel-Barcode</string>
+    <string name="place_barcode_inside_the_frame_to_scan_please_avoid_shake_to_get_results_quickly">Platzieren Sie den Barcode zum Scannen im Rahmen. Vermeiden Sie Verwacklungen, um schnell Ergebnisse zu erhalten</string>
+    <string name="click_to_scan">Zum Scannen klicken…</string>
+    <string name="or_enter_barcode_numbers_manually">Oder geben Sie die Barcode-Nummern manuell ein</string>
+    <string name="enter_barcode">Barcode eingeben…</string>
+    <string name="show_food_details">Lebensmitteldetails anzeigen</string>
 </resources>

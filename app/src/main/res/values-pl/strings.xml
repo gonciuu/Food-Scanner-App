@@ -24,5 +24,10 @@
     <string name="random_food">Losowa potrawa</string>
     <string name="popular_today">Popularne dzisiaj</string>
     <string name="check">Sprawdź</string>
-
+    <string name="scan_food_barcode">Zeskanuj kod kreskowy</string>
+    <string name="place_barcode_inside_the_frame_to_scan_please_avoid_shake_to_get_results_quickly">Umieść kod kreskowy wewnątrz ramki by zeskanować, unikaj wstrząsania, aby szybko uzyskać wyniki</string>
+    <string name="click_to_scan">Kliknij aby zeskanować…</string>
+    <string name="or_enter_barcode_numbers_manually">Lub wpisz kod ręcznie</string>
+    <string name="enter_barcode">Wpisz kod…</string>
+    <string name="show_food_details">Show food details</string>
 </resources>

@@ -24,4 +24,10 @@
     <string name="random_food">Random Food</string>
     <string name="popular_today">Popular Today</string>
     <string name="check">Check</string>
+    <string name="scan_food_barcode">Scan Food Barcode</string>
+    <string name="place_barcode_inside_the_frame_to_scan_please_avoid_shake_to_get_results_quickly">Place barcode inside the frame to scan please avoid shake to get results quickly</string>
+    <string name="click_to_scan">Click to scan...</string>
+    <string name="or_enter_barcode_numbers_manually">Or enter barcode numbers manually</string>
+    <string name="enter_barcode">Enter barcode...</string>
+    <string name="show_food_details">Show food details</string>
 </resources>
