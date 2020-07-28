@@ -4,5 +4,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="settings_bar">Einstellungen</string>
-
+    <string name="night_mode">Nacht-Modus</string>
+    <string name="language">Sprache</string>
+    <string name="language_small">sprache</string>
+    <string name="custom_app">Brauch App</string>
+    <string name="app">App</string>
+    <string name="factory_settings">Werkseinstellungen</string>
+    <string name="help">Hilfe</string>
+    <string name="app_version">App Version</string>
 </resources>

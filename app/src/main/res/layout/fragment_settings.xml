@@ -49,7 +49,7 @@
                 android:fontFamily="@font/segoeuib"
                 android:gravity="center_vertical"
                 android:paddingLeft="22dp"
-                android:text="Custom App"
+                android:text="@string/custom_app"
                 android:textColor="@color/medium_gray"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -73,7 +73,7 @@
                 android:layout_weight="1.2"
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:text="Night Mode"
+                android:text="@string/night_mode"
                 android:textColor="@color/darkGray"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -102,7 +102,7 @@
                 android:fontFamily="@font/segoeuib"
                 android:gravity="center_vertical"
                 android:paddingLeft="22dp"
-                android:text="language"
+                android:text="@string/language_small"
                 android:textColor="@color/medium_gray"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -130,7 +130,7 @@
                 android:gravity="center_vertical"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
-                android:text="Language"
+                android:text="@string/language"
                 android:textColor="@color/darkGray"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -160,7 +160,7 @@
                 android:fontFamily="@font/segoeuib"
                 android:gravity="center_vertical"
                 android:paddingLeft="22dp"
-                android:text="App"
+                android:text="@string/app"
                 android:textColor="@color/medium_gray"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -187,7 +187,7 @@
                 android:gravity="center_vertical"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
-                android:text="Factory settings"
+                android:text="@string/factory_settings"
                 android:textColor="@color/darkGray"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -227,7 +227,7 @@
                 android:gravity="center_vertical"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
-                android:text="Help"
+                android:text="@string/help"
                 android:textColor="@color/darkGray"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -267,7 +267,7 @@
                 android:gravity="center_vertical"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
-                android:text="App version"
+                android:text="@string/app_version"
                 android:textColor="@color/darkGray"
                 android:textSize="24sp"
                 android:textStyle="bold" />
