@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Food Point</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="settings_bar">Settings</string>
     <string name="night_mode">Night Mode</string>
@@ -21,4 +20,9 @@
     <string name="allergish_nutritions">Allergish nutritions</string>
     <string name="home">Home</string>
     <string name="scan_again">Scan Again</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="random_food">Random Food</string>
+    <string name="popular_today">Popular Today</string>
+    <string name="check">Check</string>
+
 </resources>

@@ -22,7 +22,7 @@
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/segoeuib"
-                android:text="Welcome to"
+                android:text="@string/welcome_to"
                 android:textColor="@color/darkGray"
                 android:textSize="28sp" />
 
@@ -53,7 +53,7 @@
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="-5dp"
                 android:fontFamily="@font/segoeuib"
-                android:text="Random Food"
+                android:text="@string/random_food"
                 android:textColor="@color/darkGray"
                 android:textSize="22sp" />
 
@@ -161,7 +161,7 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/segoeuib"
                 android:letterSpacing="0.1"
-                android:text="Popular Today"
+                android:text="@string/popular_today"
                 android:textColor="@color/darkGray"
                 android:textSize="20sp" />
 

@@ -20,4 +20,8 @@
     <string name="allergish_nutritions">Allergish nutritions</string>
     <string name="home">Home</string>
     <string name="scan_again">Scan Again</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="random_food">Random Food</string>
+    <string name="popular_today">Popular Today</string>
+    <string name="check">Check</string>
 </resources>
