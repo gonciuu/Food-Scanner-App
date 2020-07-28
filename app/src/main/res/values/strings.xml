@@ -30,4 +30,8 @@
     <string name="or_enter_barcode_numbers_manually">Or enter barcode numbers manually</string>
     <string name="enter_barcode">Enter barcode...</string>
     <string name="show_food_details">Show food details</string>
+    <string name="scanning_history">Scanning history</string>
+    <string name="food_point_keep_your_last_history_to_keep_your_all_scared_history_rate_my_app_please">Food point keep your last history to keep your all scared history Rate my app please!</string>
+    <string name="today">Today</string>
+    <string name="all">All</string>
 </resources>

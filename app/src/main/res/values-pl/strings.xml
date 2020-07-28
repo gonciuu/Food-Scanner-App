@@ -30,4 +30,8 @@
     <string name="or_enter_barcode_numbers_manually">Lub wpisz kod ręcznie</string>
     <string name="enter_barcode">Wpisz kod…</string>
     <string name="show_food_details">Show food details</string>
+    <string name="scanning_history">Historia skanowania</string>
+    <string name="food_point_keep_your_last_history_to_keep_your_all_scared_history_rate_my_app_please">Food Point zachowuje twoją całą twoją historię skanowania. Oceń moją aplikację w google store!</string>
+    <string name="today">Dzisiaj</string>
+    <string name="all">Cała</string>
 </resources>

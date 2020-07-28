@@ -30,4 +30,8 @@
     <string name="or_enter_barcode_numbers_manually">Oder geben Sie die Barcode-Nummern manuell ein</string>
     <string name="enter_barcode">Barcode eingeben…</string>
     <string name="show_food_details">Lebensmitteldetails anzeigen</string>
+    <string name="scanning_history">Scan-Verlauf</string>
+    <string name="food_point_keep_your_last_history_to_keep_your_all_scared_history_rate_my_app_please">Food Point Behalte deine letzte Geschichte, um deine ängstliche Geschichte zu bewahren. Bewerte meine App bitte!</string>
+    <string name="today">Heute</string>
+    <string name="all">Alle</string>
 </resources>
