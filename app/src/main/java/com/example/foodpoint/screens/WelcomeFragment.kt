@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_welcome.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 class WelcomeFragment : Fragment() {
@@ -58,6 +59,7 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setLocale()
         setupViewPager()
         setDarkMode()
     }
@@ -96,18 +98,56 @@ class WelcomeFragment : Fragment() {
 
     //-------------------SETUP VIEWPAGER IN WELCOME FRAGMENT BY PASS DATA IN IT---------------------
     private fun setupViewPager() {
+        val lang = requireActivity().getSharedPreferences("OPTIONS", Context.MODE_PRIVATE).getString("lang","English")!!
         val listOfPagerCard = arrayListOf<ViewPagerCard>(
             ViewPagerCard(
-                "Welcome to Food Point",
-                "Please give access your camera so that we can scan and provide you that what\nis inside the food"
+                when(lang){
+                    "English"->"Welcome to Food Point"
+                    "Polish"->"Witaj w Food Point"
+                    "Germany" -> "Wilkommen to Food Point"
+                    else -> "Welcome to Food Point"
+                },
+                when(lang){
+                    "English"->"Please give access your camera so that we can scan and provide you that what\nis inside the food"
+                    "Polish"->"Prosimy o danie permisji do aparatu w celu możliwości skanowania kodu kreskowego"
+                    "Germany" -> "Bitte geben Sie Zugriff auf Ihre Kamera, damit wir scannen und Ihnen das zur Verfügung stellen können\nist im Essen"
+                    else -> "Please give access your camera so that we can scan and provide you that what\n" +
+                            "is inside the food"
+                }
             ),
             ViewPagerCard(
-                "Simply get food data",
-                "Simply scan your food barcode and get information about us ingredients\nnutrition and etc... "
+                when(lang){
+                    "English"->"Simply get food data"
+                    "Polish"->"Łatwe pozyskanie informacji o jedzeniu"
+                    "Germany" -> "Holen Sie sich einfach Lebensmitteldaten"
+                    else -> "Simply get food data"
+                },
+                when(lang){
+                    "English"->  "Simply scan your food barcode and get information about us ingredients\nnutrition and etc... "
+                    "Polish"->"Prosimy o danie permisji do aparatu w celu możliwości skanowania kodu kreskowego"
+                    "Germany" -> "Scannen Sie einfach Ihren Lebensmittel-Barcode und erhalten Sie Informationen über uns Zutaten\n" +
+                            "Ernährung und etc ..."
+                    else -> "Simply scan your food barcode and get information about us ingredients nutrition and etc..."
+                }
+
             ),
             ViewPagerCard(
-                "Get health's nutrition",
-                "In that app you can get information about if scaned food is t\n healthy or not"
+                when(lang){
+                    "English"-> "Get health's nutrition"
+                    "Polish"->"Uzyskanie zdrowych składników produktu "
+                    "Germany" -> "Holen Sie sich die Ernährung der Gesundheit"
+                    else -> "Get health's nutrition"
+                },
+                when(lang){
+                    "English"->   "In that app you can get information about if scaned food is \n healthy or not"
+                    "Polish"->"W tej aplikacji możesz uzyskać informacje o tym, czy skanowana żywność\n" +
+                            " jest zdrowa czy nie"
+                    "Germany" -> "In dieser App können Sie Informationen darüber erhalten, ob gescannte Lebensmittel t sind\n gesund oder nicht"
+                    else -> "In that app you can get information about if scaned food is \n" +
+                            " healthy or not"
+                }
+
+
             )
         )
 
@@ -137,6 +177,20 @@ class WelcomeFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         handler.removeCallbacks(autoPageScroll)
+    }
+
+    private fun setLocale(){
+        var myLocale :Locale? = null
+        when(requireActivity().getSharedPreferences("OPTIONS", Context.MODE_PRIVATE).getString("lang","English")!!){
+            "Germany"-> myLocale = Locale("de")
+            "English"->myLocale = Locale("en")
+            "Polish"->myLocale = Locale("pl")
+        }
+        val res = resources
+        val dm = res.displayMetrics
+        val conf = res.configuration
+        conf.locale = myLocale
+        res.updateConfiguration(conf, dm)
     }
 
 }
