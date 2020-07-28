@@ -11,4 +11,13 @@
     <string name="factory_settings">Factory settings</string>
     <string name="help">Help</string>
     <string name="app_version">App version</string>
+    <string name="food_details">Food details</string>
+    <string name="cartohydrates">Cartohydrates</string>
+    <string name="proteins">Proteins</string>
+    <string name="fats">Fats</string>
+    <string name="why_it_s_superfood_for_you">Why it\'s superfood for you?</string>
+    <string name="not_allergish_nutrinions">Not allergish nutrinions</string>
+    <string name="allergish_nutritions">Allergish nutritions</string>
+    <string name="home">Home</string>
+    <string name="scan_again">Scan Again</string>
 </resources>

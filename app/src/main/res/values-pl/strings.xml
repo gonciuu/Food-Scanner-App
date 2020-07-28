@@ -12,4 +12,13 @@
     <string name="factory_settings">Ustawnia fabryczne</string>
     <string name="help">Pomoc</string>
     <string name="app_version">Wersja Apk</string>
+    <string name="food_details">Informacje o produkcie</string>
+    <string name="cartohydrates">Węglowodany</string>
+    <string name="proteins">Białko</string>
+    <string name="fats">Tłuszcze</string>
+    <string name="why_it_s_superfood_for_you">Dlaczego to dobre jedzenie dla ciebie?</string>
+    <string name="not_allergish_nutrinions">Składniki niealergiczne</string>
+    <string name="allergish_nutritions">Składniki alergiczne</string>
+    <string name="home">Home</string>
+    <string name="scan_again">Zeskanuj ponownie</string>
 </resources>

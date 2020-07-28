@@ -12,4 +12,13 @@
     <string name="factory_settings">Werkseinstellungen</string>
     <string name="help">Hilfe</string>
     <string name="app_version">App Version</string>
+    <string name="food_details">Details zum Essen</string>
+    <string name="cartohydrates">Kohlenhydrate</string>
+    <string name="proteins">Proteine</string>
+    <string name="fats">Fette</string>
+    <string name="why_it_s_superfood_for_you">Warum ist es Superfood für dich?</string>
+    <string name="not_allergish_nutrinions">Keine allergischen Nährstoffe</string>
+    <string name="allergish_nutritions">Allergischen Nährstoffe</string>
+    <string name="home">Home</string>
+    <string name="scan_again">Erneut scannen</string>
 </resources>
