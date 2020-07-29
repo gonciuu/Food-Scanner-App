@@ -32,6 +32,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.net.SocketTimeoutException
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
 
 class HomeFragment : Fragment() {
@@ -52,6 +55,7 @@ class HomeFragment : Fragment() {
         historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(HistoryViewModel::class.java)
         homeViewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
         setLoadingAdapter()
+        setActualDate()
         setBottomBarButtonsClick()
         getListOfFood()
     }
@@ -224,6 +228,13 @@ class HomeFragment : Fragment() {
     }
 
     //=============================================================================================================
+
+    //------------------SET ACTUAL DATE IN TEXTVIEW--------------------
+    private fun setActualDate(){
+        val sdf = SimpleDateFormat("EEE, d MMM", Locale.getDefault())
+        actualDate.text = sdf.format(System.currentTimeMillis())
+    }
+    //=================================================================
 }
 
 
