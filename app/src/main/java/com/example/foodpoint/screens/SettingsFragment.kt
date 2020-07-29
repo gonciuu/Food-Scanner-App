@@ -36,6 +36,7 @@ class SettingsFragment : Fragment() {
         helpAndAppVersionOnClicks()
         setLanguageOnClick()
         setFactorySettings()
+
         nightMode.setOnClickListener {
             findNavController().navigate(R.id.action_settingsFragment_to_homeFragment)
         }
@@ -49,9 +50,12 @@ class SettingsFragment : Fragment() {
     }
 
 
+    //--------------------------------------------------GET DARK MODE STATE FOR CHECKED THE SWITCH-------------------------------------------------------
     private fun getDarkModeActualState() : Boolean = darkModeStateSP.getBoolean("isDark",false)
+    //===================================================================================================================================================
 
 
+    //------------------------------------------SET NIGHT MODE ON SWITCH STATE CHANGED-------------------------------------------------
     private fun setDarkThemeOnSwitch(){
         darkThemeSwitch.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked) {
@@ -64,7 +68,9 @@ class SettingsFragment : Fragment() {
             }
         }
     }
+    //===================================================================================================================================
 
+    //--------------------------------SHOW ALERT DIALOG WITH INFORMATIONS ON CLICK----------------------------------
     private fun helpAndAppVersionOnClicks(){
         appVersion.setOnClickListener {
             try {
@@ -77,7 +83,9 @@ class SettingsFragment : Fragment() {
             }catch (ex:Exception){}
         }
     }
+    //================================================================================================================
 
+    //------------------------------------------SHOW DIALOG WITH LANGUAGES TO CHOOSE-----------------------------------------
     private fun setLanguageOnClick(){
         setLanguage.setOnClickListener {
             try{
@@ -86,11 +94,15 @@ class SettingsFragment : Fragment() {
             }catch (ex:Exception){}
         }
     }
+    //========================================================================================================================
 
+
+    //---------------------------------------------SHOW CONFIRM DIALOG ON CLICK---------------------------------------------------
     private fun setFactorySettings(){
         val historyViewModel = ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(HistoryViewModel::class.java)
         setFactorySettings.setOnClickListener {
             ConfirmDialog(requireActivity().getString(R.string.are_you_sure),requireActivity().getString(R.string.sure_mess),historyViewModel).show(requireActivity().supportFragmentManager,"factory_settings")
         }
     }
+    //=============================================================================================================================
 }
