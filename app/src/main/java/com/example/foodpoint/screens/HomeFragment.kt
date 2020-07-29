@@ -220,11 +220,7 @@ class HomeFragment : Fragment() {
                 requireActivity().runOnUiThread {
                     if(randomFoodImage!=null) randomFoodImage.setImageBitmap(image)
                 }
-            }catch (ex:Exception){
-                requireActivity().runOnUiThread {
-                    randomFoodImage.setImageResource(R.drawable.camera)
-                }
-            }
+            }catch (ex:Exception){ }
 
         }
     }
