@@ -45,6 +45,8 @@ A few resources to get you started if this is your first kotlin project:
 <img src="scr/home_d.png" width="40%">
 <img src="scr/scan.png" width="40%">
 <img src="scr/take_scr.png" width="40%">
+<img src="scr/food_details_l_1.png" width="40%">
+<img src="scr/food_details_l_2.png" width="40%">
 <img src="scr/food_details_d.png" width="40%">
 <img src="scr/food_datails_d_2.png" width="40%">
 <img src="scr/history_l.png" width="40%">
