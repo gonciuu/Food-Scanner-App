@@ -140,13 +140,15 @@ class HomeFragment : Fragment() {
                     showDialog("Error", "Check your internet connection. Error ${ex.message}")
                 }
             }
-            requireActivity().runOnUiThread {
-                val randomFood = listOfFood[Random.nextInt(0,5)]
-                setRandomFoodInfoInUI(randomFood)
-                listOfFood.remove(randomFood)
-                setTopPopularFoodsAdapter(listOfFood)
-                //homeViewModel.setFood(listOfFood)
-            }
+            try{
+                requireActivity().runOnUiThread {
+                    val randomFood = listOfFood[Random.nextInt(0,5)]
+                    setRandomFoodInfoInUI(randomFood)
+                    listOfFood.remove(randomFood)
+                    setTopPopularFoodsAdapter(listOfFood)
+                    //homeViewModel.setFood(listOfFood)
+                }
+            }catch (ex:Exception){}
 
         }
 
